@@ -18,11 +18,11 @@ export default () => (
             <p>Learn more about Ethereum Accounts in their example</p>
           </a>
         </Link>
-        <Link href="https://open.segment.com/create-next-app">
+        <Link href="/dashboard">
           <a className="card">
-            <h3>Examples &rarr;</h3>
+            <h3>Dashboard &rarr;</h3>
             <p>
-              Find other example boilerplates on the <code>create-next-app</code> site
+              Check out the OpenBounty Dashboard
             </p>
           </a>
         </Link>

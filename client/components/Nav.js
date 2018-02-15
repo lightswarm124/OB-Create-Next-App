@@ -1,4 +1,3 @@
-import Head from './Head';
 import Link from 'next/link';
 
 const links = [
@@ -20,6 +19,9 @@ const Nav = () => (
 						</Link>
 						<Link prefetch href="/accounts">
 					  		<a className="nav-link">Accounts</a>
+						</Link>
+						<Link prefetch href="/dashboard">
+							<a className="nav-link">Dashboard</a>
 						</Link>
 				  	</li>
 				  	<ul>

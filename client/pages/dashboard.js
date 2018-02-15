@@ -1,5 +1,4 @@
-import Head from '../components/Head';
-import Nav from '../components/Nav';
+import Layout from '../components/Layout';
 import Web3Container from '../lib/Web3Container';
 import AddressList from '../components/AddressList';
 
@@ -8,15 +7,11 @@ class Dashboard extends React.Component {
 		const accounts = this.props;
 
 		return (
-			<div>
-				<Head title="Dashboard" description="OpenBounty Dashboard"/>
-				<Nav />
+			<Layout title="Dashboard" description="OpenBounty Dashboard" >
 
 				<div className="row">
 					<a className="card">
 						<AddressList addresses={accounts} />
-						<h3>Accounts Page &rarr;</h3>
-						<p>Learn more about Ethereum Accounts in their example</p>
 					</a>
 				</div>
 
@@ -51,14 +46,14 @@ class Dashboard extends React.Component {
 					  color: #333;
 					}
 				`}</style>
-			</div>
+			</Layout>
 		);
 	};
 }
 
 export default () => (
 	<Web3Container
-		renderLoading={() => <div>Loading Accounts Page...</div>}
+		renderLoading={() => <Layout>Loading Accounts Page...</Layout>}
 		render={({ accounts }) => <Dashboard accounts={accounts} />}
 	/>
 );

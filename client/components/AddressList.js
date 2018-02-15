@@ -31,6 +31,7 @@ export default class AddressList extends React.PureComponent {
 				<button onClick={ () => this.setAddress(this.state.accountIndex) }>Set Address</button>
 				<br />
 				<br />
+				<p>Available Address Accounts</p>
 				<select onChange={this.setIndex}>
 					{ addresses.accounts.map((address, i) => (
 						<option key={i} value={i}>{i}: {address}</option>

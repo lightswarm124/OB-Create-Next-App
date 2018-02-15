@@ -1,11 +1,8 @@
 import Link from 'next/link';
-import Head from '../components/Head';
-import Nav from '../components/Nav';
+import Layout from '../components/Layout';
 
 export default () => (
-  <div>
-    <Head title="Home" description="Create-Next-App"/>
-    <Nav />
+  <Layout title="Home" description="Create-Next-App">
 
     <div className="hero">
       <h1 className="title">Welcome to Next!</h1>
@@ -26,10 +23,10 @@ export default () => (
             </p>
           </a>
         </Link>
-        <Link href="https://github.com/segmentio/create-next-app">
+        <Link href="/dapp">
           <a className="card">
-            <h3>Create Next App &rarr;</h3>
-            <p>Was this tool helpful? Let us know how we can improve it</p>
+            <h3>Decentralized Application &rarr;</h3>
+            <p>Sample Ethereum DApp</p>
           </a>
         </Link>
       </div>
@@ -80,5 +77,5 @@ export default () => (
         color: #333;
       }
     `}</style>
-  </div>
+  </Layout>
 );

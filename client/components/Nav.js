@@ -20,6 +20,9 @@ const Nav = () => (
 						<Link prefetch href="/dapp">
 							<a className="nav-link">Dapp</a>
 						</Link>
+						<Link prefetch href="/OBDapp">
+							<a className="nav-link">OpenBounty App</a>
+						</Link>
 						<Link prefetch href="/dashboard">
 							<a className="nav-link">Dashboard</a>
 						</Link>

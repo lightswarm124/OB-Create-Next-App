@@ -14,5 +14,5 @@ module.exports = function (deployer) {
     deployer.deploy(OpenBountyLib);
     deployer.link(ERC20Lib, OpenBounty);
     deployer.link(OpenBountyLib, OpenBounty);
-    deployer.deploy(OpenBounty);
+    deployer.deploy(OpenBounty, 10000000);
 }

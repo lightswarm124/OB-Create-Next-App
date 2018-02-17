@@ -1,6 +1,7 @@
 import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
+import AddressList from '../components/AddressList';
 
 class Dapp extends React.Component {
   state = {
@@ -21,6 +22,7 @@ class Dapp extends React.Component {
 
   getValue = async () => {
     const { accounts, contract, web3, OBContract } = this.props
+
     let response = await contract.get.call({ from: accounts[0] });
 	let etherBal = await web3.eth.getBalance(accounts[0]);
   let checkBlock = await OBContract.checkBlockLock();
@@ -61,6 +63,7 @@ class Dapp extends React.Component {
 	      </div>
         <div className="row">
             <a className="card">
+
             </a>
             <a className="card">
               <center><h3>Balances</h3></center>

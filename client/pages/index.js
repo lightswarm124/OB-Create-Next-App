@@ -9,7 +9,7 @@ export default () => (
       <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
 
       <div className="row">
-        <Link href="https://github.com/lightswarm124">
+        <Link href="OBDapp">
           <a className="card">
             <h3>Github Profile &rarr;</h3>
             <p>Learn more about Ethereum Accounts in their example</p>

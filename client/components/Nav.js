@@ -26,6 +26,9 @@ const Nav = () => (
 						<Link prefetch href="/dashboard">
 							<a className="nav-link">Dashboard</a>
 						</Link>
+						<Link prefetch href="/OBDapp">
+							<a className="nav-link">OBDapp</a>
+						</Link>
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format

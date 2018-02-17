@@ -36,8 +36,8 @@ class Dapp extends React.Component {
   }
 
   transferTokens = async ( toAddress, fromAddress ) => {
-	  const { accounts, OBContract } = this.props;
-	  let sendTokens = await OBContract.transfer(fromAddress, 618, { from: toAddress });
+	  const { accounts, OBContract, web3 } = this.props;
+	  let sendTokens = await OBContract.transfer(fromAddress, 1, { from: toAddress });
 	  let ownerTokenBalanceOf = await OBContract.balanceOf(accounts[0]);
 	  let tokenBalanceOf = await OBContract.balanceOf(accounts[1]);
 	  this.setState({ tokenBalance: tokenBalanceOf.toNumber(), ownerTokenBalance: ownerTokenBalanceOf.toNumber() })

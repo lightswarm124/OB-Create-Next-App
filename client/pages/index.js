@@ -9,7 +9,11 @@ export default () => (
       <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
 
       <div className="row">
+<<<<<<< HEAD
         <Link href="/OBDapp">
+=======
+        <Link href="OBDapp">
+>>>>>>> 789b72b3a85e6806d23c367654c7f16a5ce5c013
           <a className="card">
             <h3>OpenBounty App &rarr;</h3>
             <p>Learn more about Ethereum Accounts in their example</p>

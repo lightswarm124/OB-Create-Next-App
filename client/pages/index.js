@@ -9,24 +9,24 @@ export default () => (
       <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
 
       <div className="row">
-        <Link href="/accounts">
+        <Link href="https://github.com/lightswarm124">
           <a className="card">
-            <h3>Accounts Page &rarr;</h3>
+            <h3>Github Profile &rarr;</h3>
             <p>Learn more about Ethereum Accounts in their example</p>
           </a>
         </Link>
+		<Link href="/dapp">
+		  <a className="card">
+			<h3>Blockchain dApp &rarr;</h3>
+			<p>Sample Ethereum DApp</p>
+		  </a>
+		</Link>
         <Link href="/dashboard">
           <a className="card">
             <h3>Dashboard &rarr;</h3>
             <p>
               Check out the OpenBounty Dashboard
             </p>
-          </a>
-        </Link>
-        <Link href="/dapp">
-          <a className="card">
-            <h3>Decentralized Application &rarr;</h3>
-            <p>Sample Ethereum DApp</p>
           </a>
         </Link>
       </div>

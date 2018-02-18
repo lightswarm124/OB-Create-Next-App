@@ -56,59 +56,61 @@ class Dapp extends React.Component {
     const { web3, accounts } = this.props
     return (
 		<Layout title="Dapp" description="Decentralized Application">
-
-        <div className="row">
-            <a className="card">
-            <center><h3>Account List</h3></center>
+	      <div>
+            <h2>Repository Management</h2>
             <hr className="hr" />
-            </a>
-            <a className="card">
-              <center><h3>Balances</h3></center>
-              <hr className="hr" />
-              <b>ETH Address:</b> {this.state.projectOwner}<br />
-              <b>Current Balance:</b> {this.state.balance}<br />
-              <b>Ether Balance:</b> {this.state.ethBalance}<br />
-              <b>Token Balance:</b> {this.state.ownerTokenBalance}<br />
-              <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
-              <button onClick={this.getValue.bind(this)}>Get Balances</button>
-            </a>
-            <a className="card">
-            <center><h3>Transfer Tokens</h3></center>
+            <p>Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
+            <div>
+            <h4>Owned GitHub Repositories</h4>
             <hr className="hr" />
-            <b>ETH Address:</b><input type="text" name="TransferAddress" />
-            <b>Owner Token Balance:</b> {this.state.ownerTokenBalance}<br />
-            <b>User Token Balance:</b> {this.state.tokenBalance}<br />
-            <b>Token Supply:</b> {this.state.tokenSupply}<br />
-            <button onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
-            <button onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
-            </a>
-        </div>
-        <div className="row">
+            <table class="table table-hover" width="100%">
+              <thead>
+                <tr>
+                  <th scope="col"><center>Repository Name</center></th>
+                  <th scope="col"><center>ETH Address</center></th>
+                  <th scope="col"><center>Token Supply</center></th>
+                  <th scope="col"><center>Registration</center></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active">
+                  <td><center>Some-Reponame-v0.01</center></td>
+                  <td><center>*ETH ADDRES HERE*</center></td>
+                  <td><center>10/18</center></td>
+                  <td><center><button onClick={this.getValue.bind(this)}>Register</button></center></td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            <p />
+            <div>
+            <h4>Recent GitHub Activity</h4>
+            <hr className="hr" />
+            <table class="table table-hover" width="100%">
+              <thead>
+                <tr>
+                  <th scope="col"><center>Repository Name</center></th>
+                  <th scope="col"><center>Timestamp</center></th>
+                  <th scope="col"><center>Action</center></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active">
+                  <td><center>Some-Reponame-v0.01</center></td>
+                  <td><center>02-18-2018-01:15:01</center></td>
+                  <td><center>(pull/merge/etc)</center></td>
+                </tr>
+                <tr>
 
-            <a className="card">
-              <center><h3>Last 10 Transactions</h3></center>
-              <hr className="hr" />
-              1<br />
-              2<br />
-              3<br />
-              5<br />
-              4<br />
-              6<br />
-              7<br />
-              9<br />
-              8<br />
-              10<br />
-            </a>
-            <a className="card">
-              <center><h3>QRCode</h3></center>
-              <p>qrcode goes here</p>
-            </a>
-            <a className="card">
-              <center><h3>Backup Account</h3></center>
-              <hr className="hr" />
-              <p></p>
-            </a>
-        </div>
+                </tr>
+
+              </tbody>
+            </table>
+            </div>
+	      </div>
+
         <style jsx>{`
           .hero {
             width: 100%;

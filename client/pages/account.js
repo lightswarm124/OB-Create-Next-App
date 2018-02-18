@@ -56,57 +56,92 @@ class Dapp extends React.Component {
     const { web3, accounts } = this.props
     return (
 		<Layout title="Dapp" description="Decentralized Application">
-
+	      <div>
+            <h2>Account Management</h2>
+            <hr className="hr" />
+	      </div>
         <div className="row">
             <a className="card">
-            <center><h3>Account List</h3></center>
-            <hr className="hr" />
-            </a>
-            <a className="card">
-              <center><h3>Balances</h3></center>
+              <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
-              <b>ETH Address:</b> {this.state.projectOwner}<br />
-              <b>Current Balance:</b> {this.state.balance}<br />
-              <b>Ether Balance:</b> {this.state.ethBalance}<br />
-              <b>Token Balance:</b> {this.state.ownerTokenBalance}<br />
-              <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
-              <button onClick={this.getValue.bind(this)}>Get Balances</button>
             </a>
             <a className="card">
-            <center><h3>Transfer Tokens</h3></center>
-            <hr className="hr" />
-            <b>ETH Address:</b><input type="text" name="TransferAddress" />
-            <b>Owner Token Balance:</b> {this.state.ownerTokenBalance}<br />
-            <b>User Token Balance:</b> {this.state.tokenBalance}<br />
-            <b>Token Supply:</b> {this.state.tokenSupply}<br />
-            <button onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
-            <button onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
+              <center><h3><b>Balances</b></h3></center>
+                <hr className="hr" />
+                <center><h6>ETH Address</h6></center>
+                <center>0x0</center>
+                <hr className="hr" />
+                <center><h6>Current Balance</h6></center>
+                <center>{this.state.balance}</center>
+                <hr className="hr" />
+                <center><h6>ETH Balance</h6></center>
+                <center>{this.state.ethBalance}</center>
+                <hr className="hr" />
+                <center><h6>Token Balance</h6></center>
+                <center>{this.state.ownerTokenBalance}</center>
+                <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
+                <button onClick={this.getValue.bind(this)}>Get Balances</button>
+            </a>
+            <a className="card">
+              <center><h3><b>Transfer Tokens</b></h3></center>
+                <hr className="hr" />
+                <center><h6>ETH Address</h6></center>
+                <input type="text" name="TransferAddress" /><br />
+                <hr className="hr" />
+                <center><h6>Owner Token Balance</h6></center>
+                <center>{this.state.ownerTokenBalance}</center>
+                <hr className="hr" />
+                <center><h6>User Token Balance</h6></center>
+                <center>{this.state.tokenBalance}</center>
+                <hr className="hr" />
+                <center><h6>Token Supply</h6></center>
+                <center>{this.state.tokenSupply}</center>
+                <button onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
+                <button onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
             </a>
         </div>
         <div className="row">
-
             <a className="card">
-              <center><h3>Last 10 Transactions</h3></center>
+              <center><h3><b>Last 10 Transactions</b></h3></center>
               <hr className="hr" />
-              1<br />
-              2<br />
-              3<br />
-              5<br />
-              4<br />
-              6<br />
-              7<br />
-              9<br />
-              8<br />
-              10<br />
+              <table class="table table-hover" width="100%">
+                <thead>
+                  <tr>
+                    <th scope="col"><center>Block</center></th>
+                    <th scope="col"><center>Transaction</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-active">
+                    <td><center>*trunca..*</center></td>
+                    <td><center>*trunca..*</center></td>
+                  </tr>
+                  <tr>
+                  </tr>
+                </tbody>
+              </table>
+
             </a>
             <a className="card">
               <center><h3>QRCode</h3></center>
-              <p>qrcode goes here</p>
-            </a>
-            <a className="card">
-              <center><h3>Backup Account</h3></center>
               <hr className="hr" />
               <p></p>
+              <center><h6>Address</h6></center>
+              <hr className="hr" />
+              <center>0x0</center>
+            </a>
+            <a className="card">
+              <center><h3><b>Backup Account</b></h3></center>
+              <hr className="hr" /><br />
+              <button onClick={this.getValue.bind(this)}>Backup Account</button>
+              <p></p>
+              <center><h3><b>Transfer Ownership</b></h3></center>
+              <hr className="hr" />
+              <center><h6>ETH Address</h6></center>
+              <input type="text" name="TransferAddress" /><br />
+              <button onClick={this.getValue.bind(this)}>Transfer</button><br />
+
+
             </a>
         </div>
         <style jsx>{`

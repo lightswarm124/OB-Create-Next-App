@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const links = [
-	{ href: 'https://github.com/lightswarm124', label: 'My GitHub' }
+	{ href: 'https://github.com/lightswarm124', label: 'Login w/ Github' }
 ].map(link => {	// remap link.href + link.label into link.key
 	link.key = `nav-link-${link.href}-${link.label}`
 	return link;
@@ -17,17 +17,17 @@ const Nav = () => (
 						<Link prefetch href="/">
 					  		<a className="nav-link">Home</a>
 						</Link>
-						<Link prefetch href="/dapp">
-							<a className="nav-link">Dapp</a>
+						<Link prefetch href="/account">
+							<a className="nav-link">Account</a>
 						</Link>
-						<Link prefetch href="/newdapp">
-						  <a className="nav-link">newDapp</a>
+						<Link prefetch href="/repositories">
+							<a className="nav-link">Repos</a>
+						</Link>
+						<Link prefetch href="/project">
+						  <a className="nav-link">Project</a>
 						</Link>
 						<Link prefetch href="/dashboard">
 							<a className="nav-link">Dashboard</a>
-						</Link>
-						<Link prefetch href="/OBDapp">
-							<a className="nav-link">OBDapp</a>
 						</Link>
 				  	</li>
 				  	<ul>

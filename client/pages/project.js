@@ -56,7 +56,10 @@ class Dapp extends React.Component {
     const { web3, accounts } = this.props
     return (
 		<Layout title="Dapp" description="Decentralized Application">
-
+	      <div>
+            <h2>Account Management</h2>
+            <hr className="hr" />
+	      </div>
         <div className="row">
             <a className="card">
             <center><h3>Account List</h3></center>
@@ -84,7 +87,6 @@ class Dapp extends React.Component {
             </a>
         </div>
         <div className="row">
-
             <a className="card">
               <center><h3>Last 10 Transactions</h3></center>
               <hr className="hr" />

@@ -2,6 +2,7 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
+import Repos from '../components/Repos';
 
 class Dapp extends React.Component {
   state = {
@@ -110,7 +111,9 @@ class Dapp extends React.Component {
             </table>
             </div>
 	      </div>
-
+        <div>
+          <Repos Repos={Repos}/>
+        </div>
         <style jsx>{`
           .hero {
             width: 100%;

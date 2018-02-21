@@ -2,6 +2,8 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
+import AddressQRCODE from 'qrcode.png';
+
 
 class Dapp extends React.Component {
   state = {
@@ -57,7 +59,7 @@ class Dapp extends React.Component {
     return (
 		<Layout title="Dapp" description="Decentralized Application">
 	      <div>
-            <h2>Account Management</h2>
+            <h2><b>Account Management</b></h2>
             <hr className="hr" />
 	      </div>
         <div className="row">

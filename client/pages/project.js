@@ -57,19 +57,25 @@ class Dapp extends React.Component {
     return (
 		<Layout title="Dapp" description="Decentralized Application">
 	      <div>
-            <h2>Account Management</h2>
-            <hr className="hr" />
+            <h2><b>Project Management</b></h2>
+            <hr className="hr" /><br />
 	      </div>
+        <h4>&nbsp;&nbsp;<b>Token Management</b></h4>
+
         <div className="row">
             <a className="card">
-            <center><h3>Account List</h3></center>
+            <center><h3><b>Create Token</b></h3></center>
             <hr className="hr" />
+            <center><h6>ETH Address</h6></center>
+            <center>*ETH ADDRESS HERE*</center>
+            <center><h6>Token Supply</h6></center>
+            <center><h6>Repository</h6></center>
+
             </a>
             <a className="card">
-              <center><h3>Balances</h3></center>
+              <center><h3><b>Managers</b></h3></center>
               <hr className="hr" />
-              <b>ETH Address:</b> {this.state.projectOwner}<br />
-              <b>Current Balance:</b> {this.state.balance}<br />
+              <center><b>Add Manager</b></center>
               <b>Ether Balance:</b> {this.state.ethBalance}<br />
               <b>Token Balance:</b> {this.state.ownerTokenBalance}<br />
               <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>

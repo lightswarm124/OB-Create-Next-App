@@ -57,11 +57,11 @@ class Dapp extends React.Component {
     return (
 		<Layout title="Dapp" description="Decentralized Application">
 	      <div>
-            <h2>Repository Management</h2>
+            <h2><b>Repository Management</b></h2>
             <hr className="hr" />
-            <p>Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
+            <p>&nbsp;Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
             <div>
-            <h4>Owned GitHub Repositories</h4>
+            <h4>&nbsp;&nbsp;<b>Owned GitHub Repositories</b></h4>
             <hr className="hr" />
             <table class="table table-hover" width="100%">
               <thead>
@@ -86,7 +86,7 @@ class Dapp extends React.Component {
             </div>
             <p />
             <div>
-            <h4>Recent GitHub Activity</h4>
+            <h4>&nbsp;&nbsp;<b>Recent GitHub Activity</b></h4>
             <hr className="hr" />
             <table class="table table-hover" width="100%">
               <thead>

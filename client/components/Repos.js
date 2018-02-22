@@ -30,20 +30,12 @@ class Repos extends React.Component {
 
 				{this.state.repos.map(repo => !repo.fork && (
 					<div className="repo">
-						<h4>{repo.name}</h4>
-						<p>{repo.description}</p>
-
 						<a href={repo.svn_url} target="_blank">
-							<img src="/static/github.svg" width="25px" height="25px" />
-							{repo.full_name}
+							<h4>{repo.name}</h4>
+							<p>{repo.description}</p>
 						</a>
 
-						<svg>
-							<line className="top" x1="0" y1="0" x2="900" y2="0" />
-							<line className="left" x1="0" y1="-350" x2="0" y2="350" />
-							<line className="bottom" x1="-600" y1="175" x2="300" y2="175" />
-							<line className="right" x1="300" y1="-350" x2="300" y2="525" />
-						</svg>
+
 					</div>
 				))}
 
@@ -60,16 +52,16 @@ class Repos extends React.Component {
 					}
 					.repo {
 						position: relative;
-						margin: 15px;
-						height: 175px;
+						margin: 2%;
+						height: 50px;
 						box-shadow: inset 0 0 0 3px #2c3e50;
 						transition: all 0.4s 0.1s;
-						padding: 10px;
-						width: 300px;
+						padding: 5%;
+						width: 200px;
 						font-family: Raleway;
 						font-size: 12px;
 						box-shadow: 0px 0px 0 #000;
-						background-color: #000;
+						background-color: #2f4f4f;
 					}
 					.repo:hover {
 						-webkit-transition-delay: 0s;
@@ -77,7 +69,7 @@ class Repos extends React.Component {
 						box-shadow: 5px 5px 0 #067df7;
 					}
 					.repo h4 {
-						margin: 0;
+						margin-left: 5px;
 						font-size: 14px;
 						width: 100%;
 						border-bottom: 1px solid #fff;

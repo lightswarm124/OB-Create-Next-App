@@ -3,7 +3,7 @@ import Web3 from "web3";
 const resolveWeb3 = resolve => {
     let { web3 } = window
   const alreadyInjected = typeof web3 !== 'undefined'; // i.e. Mist/Metamask
-    const localProvider = 'http://localhost:9545';	   // change port to 8545 when using "ganache-cli"
+    const localProvider = 'http://localhost:8545';	   // change port to 8545 when using "ganache-cli"
   if (alreadyInjected) {
     console.log("Injected web3 detected.");
     web3 = new Web3(web3.currentProvider)

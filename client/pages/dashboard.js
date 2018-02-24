@@ -2,9 +2,11 @@ import Layout from '../components/Layout';
 import Web3Container from '../lib/Web3Container';
 import AddressList from '../components/AddressList';
 
+
 class Dashboard extends React.Component {
 	render() {
 		const accounts = this.props;
+
 
 		return (
 			<Layout title="Dashboard" description="OpenBounty Dashboard" >

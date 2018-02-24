@@ -34,7 +34,6 @@ class Dapp extends React.Component {
 		<Layout title="Dapp" description="Decentralized Application">
 	      <div>
 	        <h1>My Dapp</h1>
-
 	        <button onClick={this.storeValue}>Store 5 into account balance</button>
 	        <button onClick={this.getValue.bind(this)}>Get account balance</button>
 	        <div>Balance: {this.state.balance}</div>

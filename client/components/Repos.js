@@ -33,6 +33,7 @@ class Repos extends React.Component {
 						<a href={repo.svn_url} target="_blank">
 							<h4>{repo.name}</h4>
 							<p>{repo.description}</p>
+							<p>{repo.statuses_url}</p>
 						</a>
 
 

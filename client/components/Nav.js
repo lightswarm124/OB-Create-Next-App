@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+
 const links = [
 	{ href: 'https://github.com/lightswarm124', label: 'Login w/ Github' }
 ].map(link => {	// remap link.href + link.label into link.key
@@ -26,8 +27,8 @@ const Nav = () => (
 						<Link prefetch href="/project">
 						  <a className="nav-link">Project</a>
 						</Link>
-						<Link prefetch href="/dashboard">
-							<a className="nav-link">Dashboard</a>
+						<Link prefetch href="/settings">
+							<a className="nav-link">Settings</a>
 						</Link>
 				  	</li>
 				  	<ul>

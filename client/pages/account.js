@@ -2,7 +2,9 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-import AddressQRCODE from 'qrcode.png';
+import Img from 'react-image';
+
+
 
 
 class Dapp extends React.Component {
@@ -61,13 +63,14 @@ class Dapp extends React.Component {
 	      <div>
             <h2><b>Account Management</b></h2>
             <hr className="hr" />
+            <Img src ="../images/Logo_White.jpg" />
 	      </div>
         <div className="row">
-            <a className="card">
+            <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
             </a>
-            <a className="card">
+            <a className="card" id="accountbalances">
               <center><h3><b>Balances</b></h3></center>
                 <hr className="hr" />
                 <center><h6>ETH Address</h6></center>
@@ -84,7 +87,7 @@ class Dapp extends React.Component {
                 <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
                 <button onClick={this.getValue.bind(this)}>Get Balances</button>
             </a>
-            <a className="card">
+            <a className="card" id="transfertokens">
               <center><h3><b>Transfer Tokens</b></h3></center>
                 <hr className="hr" />
                 <center><h6>ETH Address</h6></center>
@@ -103,7 +106,7 @@ class Dapp extends React.Component {
             </a>
         </div>
         <div className="row">
-            <a className="card">
+            <a className="card" id="last10transactions">
               <center><h3><b>Last 10 Transactions</b></h3></center>
               <hr className="hr" />
               <table class="table table-hover" width="100%">
@@ -124,7 +127,7 @@ class Dapp extends React.Component {
               </table>
 
             </a>
-            <a className="card">
+            <a className="card" id="qrcode">
               <center><h3>QRCode</h3></center>
               <hr className="hr" />
               <p></p>
@@ -132,7 +135,7 @@ class Dapp extends React.Component {
               <hr className="hr" />
               <center>0x0</center>
             </a>
-            <a className="card">
+            <a className="card" id="backupaccount">
               <center><h3><b>Backup Account</b></h3></center>
               <hr className="hr" /><br />
               <button onClick={this.getValue.bind(this)}>Backup Account</button>
@@ -140,7 +143,7 @@ class Dapp extends React.Component {
               <center><h3><b>Transfer Ownership</b></h3></center>
               <hr className="hr" />
               <center><h6>ETH Address</h6></center>
-              <input type="text" name="TransferAddress" /><br />
+              <input type="text" id="transferaddress" name="TransferAddress" /><br />
               <button onClick={this.getValue.bind(this)}>Transfer</button><br />
 
 

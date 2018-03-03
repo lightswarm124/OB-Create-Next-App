@@ -2,7 +2,6 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-import Img from 'react-image';
 
 
 
@@ -63,12 +62,12 @@ class Dapp extends React.Component {
 	      <div>
             <h2><b>Account Management</b></h2>
             <hr className="hr" />
-            <Img src ="../images/Logo_White.jpg" />
 	      </div>
         <div className="row">
             <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
+              <img src="../static/ricky.jpg" />
             </a>
             <a className="card" id="accountbalances">
               <center><h3><b>Balances</b></h3></center>

@@ -25,10 +25,10 @@ class RepositoryInfo extends React.Component {
 
   render() {
     return (
-       <div id="github-info">
+       <div>
         {this.state.loading}
 
-        {this.state.repos.map(repo => !repo.fork && (
+        {this.state.repos.map(repo => (
           <div className="repo">
             <a href={repo.svn_url} target="_blank">
               <h4>{repo.name}</h4>
@@ -150,4 +150,4 @@ class RepositoryInfo extends React.Component {
   }
 }
 
-export default RepositoryInfo; 
+export default RepositoryInfo;

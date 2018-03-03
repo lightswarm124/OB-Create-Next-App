@@ -4,6 +4,8 @@ import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
 import RepositoryInfo from '../components/repositoryInfo';
 import GitSearch from '../components/GitSearch';
+import GitData from '../components/GitData';
+
 
 
 class Dapp extends React.Component {
@@ -69,7 +71,7 @@ class Dapp extends React.Component {
 
 
             <hr className="hr" />
-            <table class="table table-hover" width="100%">
+            <table className="table table-hover" width="100%">
               <thead>
                 <tr>
                   <th scope="col"><center>Repository Name</center></th>
@@ -79,7 +81,7 @@ class Dapp extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr class="table-active">
+                <tr className="table-active">
                   <td><center>Some-Reponame-v0.01</center></td>
                   <td><center>*ETH ADDRES HERE*</center></td>
                   <td><center>10/18</center></td>
@@ -92,18 +94,19 @@ class Dapp extends React.Component {
             </div>
             <p />
             <div>
+              <GitData/>
             <h4>Recent GitHub Activity</h4>
             <hr className="hr" />
-            <table class="table table-hover" width="100%">
+            <table className="table table-hover" width="100%">
               <thead>
                 <tr>
-                  <th scope="col"><center>Repository Name</center></th>
+                  <th scope="col"><center></center></th>
                   <th scope="col"><center>Timestamp</center></th>
                   <th scope="col"><center>Action</center></th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="table-active">
+                <tr className="table-active">
                   <td><center>Some-Reponame-v0.01</center></td>
                   <td><center>02-18-2018-01:15:01</center></td>
                   <td><center>(pull/merge/etc)</center></td>

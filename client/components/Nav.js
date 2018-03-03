@@ -9,24 +9,24 @@ const links = [
 });
 
 const Nav = () => (
-	<nav className="navbar navbar-expand navbar-dark bg-dark mb-4">
+	<nav className="navbar navbar-expand-lg navbar-light bg-light">
 		<div className="container">
-			<a className="navbar-brand" href="/"><img src="../static/Logo_White.png" alt="OpenBounty" width="180px" /></a>
+			<a className="navbar-brand" href="/"><img src="../static/Logo_Black.png" alt="OpenBounty" width="180px" /></a>
 			<div className="collapse navbar-collapse">
 				<ul className="navbar-nav ml-auto">
 				  	<li className="nav-item">
 
 						<Link prefetch href="/account">
-							<a className="nav-link">Account</a>
+							<a className="nav-link"><b>Account</b></a>
 						</Link>
 						<Link prefetch href="/repositories">
-							<a className="nav-link">Repos</a>
+							<a className="nav-link"><b>Repos</b></a>
 						</Link>
 						<Link prefetch href="/project">
-						  <a className="nav-link">Project</a>
+						  <a className="nav-link"><b>Project</b></a>
 						</Link>
 						<Link prefetch href="/settings">
-							<a className="nav-link">Settings</a>
+							<a className="nav-link"><b>Settings</b></a>
 						</Link>
 				  	</li>
 				  	<ul>
@@ -34,7 +34,7 @@ const Nav = () => (
 					  		({ key, href, label }) => (
 								<li className="nav-item" key={key}>
 						  			<Link prefetch href={href}>
-										<a className="nav-link">{label}</a>
+										<a className="nav-link"><b>{label}</b></a>
 						  			</Link>
 								</li>
 					  		)

@@ -4,8 +4,6 @@ import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
 
 
-
-
 class Dapp extends React.Component {
   state = {
 	  balance: 0,
@@ -31,7 +29,6 @@ class Dapp extends React.Component {
     let response = await contract.get.call({ from: accounts[0] });
 	let etherBal = await web3.eth.getBalance(accounts[0]);
   let checkBlock = await OBContract.checkBlockLock();
-
   //response = response.toNumber();
 	console.log(response);
 	console.log(etherBal);
@@ -46,28 +43,26 @@ class Dapp extends React.Component {
     let tokenBalanceOf = await OBContract.balanceOf(accounts[1]);
     this.setState({ tokenBalance: tokenBalanceOf.toNumber(), ownerTokenBalance: ownerTokenBalanceOf.toNumber() })
   }
-
   projectInfo = async () => {
     const { accounts, contract, web3, OBContract } = this.props
   let owner = await OBContract.projectOwner();
   //response = response.toNumber();
   console.log(owner);
   this.setState({ projectowner: owner })
-
   }
   render () {
     const { web3, accounts } = this.props
     return (
-		<Layout title="Dapp" description="Decentralized Application">
+		<Layout title="OpenBounty - Account Management" description="OpenBounty Account Management">
 	      <div>
-            <h2><b>Account Management</b></h2>
-            <hr className="hr" />
+tabs
+
 	      </div>
+
         <div className="row">
             <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
-              <img src="../static/ricky.jpg" />
             </a>
             <a className="card" id="accountbalances">
               <center><h3><b>Balances</b></h3></center>
@@ -124,7 +119,6 @@ class Dapp extends React.Component {
                   </tr>
                 </tbody>
               </table>
-
             </a>
             <a className="card" id="qrcode">
               <center><h3>QRCode</h3></center>
@@ -144,8 +138,6 @@ class Dapp extends React.Component {
               <center><h6>ETH Address</h6></center>
               <input type="text" id="transferaddress" name="TransferAddress" /><br />
               <button onClick={this.getValue.bind(this)}>Transfer</button><br />
-
-
             </a>
         </div>
         <style jsx>{`

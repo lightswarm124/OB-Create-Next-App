@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 
 const links = [
-	{ href: 'https://github.com/lightswarm124', label: 'Login w/ Github' }
+	{ href: 'https://github.com/lightswarm124', label: <img src="../static/GitHub-Mark-120px-plus.png" width="30px" title="Login with GitHub" /> }
 ].map(link => {	// remap link.href + link.label into link.key
 	link.key = `nav-link-${link.href}-${link.label}`
 	return link;
@@ -11,22 +11,22 @@ const links = [
 const Nav = () => (
 	<nav className="navbar navbar-expand-lg navbar-light bg-light">
 		<div className="container">
-			<a className="navbar-brand" href="/"><img src="../static/Logo_Black.png" alt="OpenBounty" width="180px" /></a>
+			<a className="navbar-brand" href="/"><img src="../static/Logo_Black.png" title="Home" width="180px" /></a>
 			<div className="collapse navbar-collapse">
 				<ul className="navbar-nav ml-auto">
 				  	<li className="nav-item">
 
 						<Link prefetch href="/account">
-							<a className="nav-link"><b>Account</b></a>
+							<a className="nav-link"><img src="../static/Account.png" width="30px" title="Account Management" /></a>
 						</Link>
 						<Link prefetch href="/repositories">
-							<a className="nav-link"><b>Repos</b></a>
+							<a className="nav-link"><img src="../static/Repositories.png" width="30px" title="Repository Management" /></a>
 						</Link>
 						<Link prefetch href="/project">
-						  <a className="nav-link"><b>Project</b></a>
+						  <a className="nav-link"><img src="../static/Project.png" width="30px" title="Project Management" /></a>
 						</Link>
 						<Link prefetch href="/settings">
-							<a className="nav-link"><b>Settings</b></a>
+							<a className="nav-link"><img src="../static/Settings.png" width="30px" title="OpenBounty Settings" /></a>
 						</Link>
 				  	</li>
 				  	<ul>

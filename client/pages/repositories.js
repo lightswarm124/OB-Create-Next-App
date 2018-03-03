@@ -138,22 +138,26 @@ class Dapp extends React.Component {
             width: 220px;
             text-align: left;
             text-decoration: none;
-            color: #434343;
+            color: #9B9B9B;
             border: 1px solid #9B9B9B;
           }
           .card:hover {
-            border-color: #067df7;
+            border-color: #b58e12;
           }
           .card h3 {
             margin: 0;
-            color: #067df7;
+            color: #343a40;
             font-size: 18px;
+          }
+          .card h6 {
+            margin: 0;
+            color: #343a40;
           }
           .card p {
             margin: 0;
             padding: 12px 0 0;
             font-size: 13px;
-            color: #333;
+            color: #9B9B9B;
           }
           .hr{
             padding: 0px;

@@ -55,67 +55,9 @@ class Dapp extends React.Component {
   render () {
     const { web3, accounts } = this.props
     return (
-		<Layout title="Dapp" description="Decentralized Application">
+		<Layout title="OpenBounty Project Management" description="OpenBounty Project Management">
 	      <div>
-            <h2><b>Project Management</b></h2>
-            <hr className="hr" /><br />
-	      </div>
-        <h4>&nbsp;&nbsp;<b>Token Management</b></h4>
 
-        <div className="row">
-            <a className="card">
-            <center><h3><b>Create Token</b></h3></center>
-            <hr className="hr" />
-            <center><h6>ETH Address</h6></center>
-            <center>*ETH ADDRESS HERE*</center>
-            <center><h6>Token Supply</h6></center>
-            <center><h6>Repository</h6></center>
-
-            </a>
-            <a className="card">
-              <center><h3><b>Managers</b></h3></center>
-              <hr className="hr" />
-              <center><b>Add Manager</b></center>
-              <b>Ether Balance:</b> {this.state.ethBalance}<br />
-              <b>Token Balance:</b> {this.state.ownerTokenBalance}<br />
-              <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
-              <button onClick={this.getValue.bind(this)}>Get Balances</button>
-            </a>
-            <a className="card">
-            <center><h3>Transfer Tokens</h3></center>
-            <hr className="hr" />
-            <b>ETH Address:</b><input type="text" name="TransferAddress" />
-            <b>Owner Token Balance:</b> {this.state.ownerTokenBalance}<br />
-            <b>User Token Balance:</b> {this.state.tokenBalance}<br />
-            <b>Token Supply:</b> {this.state.tokenSupply}<br />
-            <button onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
-            <button onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
-            </a>
-        </div>
-        <div className="row">
-            <a className="card">
-              <center><h3>Last 10 Transactions</h3></center>
-              <hr className="hr" />
-              1<br />
-              2<br />
-              3<br />
-              5<br />
-              4<br />
-              6<br />
-              7<br />
-              9<br />
-              8<br />
-              10<br />
-            </a>
-            <a className="card">
-              <center><h3>QRCode</h3></center>
-              <p>qrcode goes here</p>
-            </a>
-            <a className="card">
-              <center><h3>Backup Account</h3></center>
-              <hr className="hr" />
-              <p></p>
-            </a>
         </div>
         <style jsx>{`
           .hero {
@@ -144,22 +86,26 @@ class Dapp extends React.Component {
             width: 220px;
             text-align: left;
             text-decoration: none;
-            color: #434343;
+            color: #9B9B9B;
             border: 1px solid #9B9B9B;
           }
           .card:hover {
-            border-color: #067df7;
+            border-color: #b58e12;
           }
           .card h3 {
             margin: 0;
-            color: #067df7;
+            color: #343a40;
             font-size: 18px;
+          }
+          .card h6 {
+            margin: 0;
+            color: #343a40;
           }
           .card p {
             margin: 0;
             padding: 12px 0 0;
             font-size: 13px;
-            color: #333;
+            color: #9B9B9B;
           }
           .hr{
             padding: 0px;

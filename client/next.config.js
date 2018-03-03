@@ -1,6 +1,10 @@
+const withCSS = require('@zeit/next-css')
 module.exports = {
 	publicRuntimeConfig: {
 	  staticFolder: '/static'
+	},
+	withCSS:{
+		withCSS
 	},
 	webpack: (config, { buildId, dev }) => {
 		/* Fixes npm packages that depend on `fs` module

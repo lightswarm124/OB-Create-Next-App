@@ -29,6 +29,10 @@ const Nav = () => (
 						<Link prefetch href="/dashboard">
 							<a className="nav-link">Dashboard</a>
 						</Link>
+						<Link prefetch href="/testOB">
+							<a className="nav-link">Test Contract</a>
+						</Link>
+
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format

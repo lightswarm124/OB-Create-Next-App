@@ -18,9 +18,9 @@ library OpenBountyLib {
     }
 
     enum lockState {
-        Inactive,
-        Pending,
-        Approved
+	Pending,
+        Approved,
+	Inactive
     }
 
     function init (BountyStorage storage self) public {
@@ -35,12 +35,12 @@ library OpenBountyLib {
     }
 
     function isProjectOwner (BountyStorage storage self, address account) public view returns (bool isTrue) {
-        if (self.ProjectOwner != account) return false;
+        if (self.ProjectOwner == account){
+		return true;
+	}
+	 return false;
     }
 
-    function checkBlockLock (BountyStorage storage self) public view returns (bool unlock) {
-        if (self.lockBlockNumber >= self.unlockBlockNumber) return false;
-    }
 
     function changeProjectOwner (BountyStorage storage self, address _newProjectOwner) public returns (address newOwner) {
         require (msg.sender == self.ProjectOwner
@@ -61,13 +61,13 @@ library OpenBountyLib {
 
     function delManager (BountyStorage storage self, address _oldManager) public returns (bool success) {
         require (msg.sender == self.ProjectOwner);
-        self.ProjectManagers[_oldManager] = true;
+        self.ProjectManagers[_oldManager] = false;
         ManagerDeleted(_oldManager);
         return true;
     }
 
     function lockProjectBounty (BountyStorage storage self) public returns (bool success) {
-        require(self.ProjectManagers[msg.sender] == true && self.bountyStatus != lockState.Inactive);
+	require(self.ProjectManagers[msg.sender] == true && self.bountyStatus != lockState.Inactive);
         self.bountyStatus = lockState.Pending;
         self.lockBlockNumber = block.number;
         BountyPending(msg.sender, self.lockBlockNumber);

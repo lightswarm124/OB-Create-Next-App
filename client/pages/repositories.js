@@ -2,7 +2,9 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-import Repository from '../components/repository';
+import RepositoryInfo from '../components/repositoryInfo';
+import GitSearch from '../components/GitSearch';
+
 
 class Dapp extends React.Component {
   state = {
@@ -63,6 +65,7 @@ class Dapp extends React.Component {
             <p>Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
             <div>
             <h4>Owned GitHub Repositories</h4>
+            <GitSearch />
 
 
             <hr className="hr" />
@@ -115,7 +118,7 @@ class Dapp extends React.Component {
 	      </div>
         <div>
 
-          <Repository />
+          <RepositoryInfo />
         </div>
         <style jsx>{`
           .hero {

@@ -2,7 +2,7 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-
+import QRCode from 'qrcode.react';
 class Dapp extends React.Component {
   state = {
 	  balance: 0,
@@ -10,7 +10,8 @@ class Dapp extends React.Component {
     projectowner: 0,
     ownerTokenBalance:0,
 	  tokenBalance: 0,
-	  totalSupply: 0
+	  totalSupply: 0,
+    ethaddress: 0x0
   }
 
   storeValue = async () => {
@@ -61,12 +62,13 @@ class Dapp extends React.Component {
             <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
+
             </a>
             <a className="card" id="accountbalances">
               <center><h3><b>Balances</b></h3></center>
                 <hr className="hr" />
                 <center><h6>ETH Address</h6></center>
-                <center>0x0</center>
+                <center>{this.state.ethaddress}</center>
                 <hr className="hr" />
                 <center><h6>Current Balance</h6></center>
                 <center>{this.state.balance}</center>
@@ -76,8 +78,8 @@ class Dapp extends React.Component {
                 <hr className="hr" />
                 <center><h6>Token Balance</h6></center>
                 <center>{this.state.ownerTokenBalance}</center>
-                <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
-                <button onClick={this.getValue.bind(this)}>Get Balances</button>
+                <button class="btn btn-secondary" onClick={this.storeValue}>Store 5 to Acct Bal.</button>
+                <button class="btn btn-secondary" onClick={this.getValue.bind(this)}>Get Balances</button>
             </a>
             <a className="card" id="transfertokens">
               <center><h3><b>Transfer Tokens</b></h3></center>
@@ -93,18 +95,18 @@ class Dapp extends React.Component {
                 <hr className="hr" />
                 <center><h6>Token Supply</h6></center>
                 <center>{this.state.tokenSupply}</center>
-                <button onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
-                <button onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
+                <button class="btn btn-secondary" onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
+                <button class="btn btn-secondary" onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
             </a>
         </div>
         <div className="row">
         <a className="card" id="qrcode">
           <center><h3>QRCode</h3></center>
           <hr className="hr" />
-          <p><center><img src="../static/qrcode.png" width="180px" /></center></p>
+          <p><center><QRCode value="{this.state.ethaddress}" /></center></p>
           <center><h6>Address</h6></center>
           <hr className="hr" />
-          <center>0x0</center>
+          <center>{this.state.ethaddress}</center>
         </a>
             <a className="card" id="last10transactions">
               <center><h3><b>Last 10 Transactions</b></h3></center>
@@ -130,13 +132,13 @@ class Dapp extends React.Component {
             <a className="card" id="backupaccount">
               <center><h3><b>Backup Account</b></h3></center>
               <hr className="hr" /><br />
-              <button onClick={this.getValue.bind(this)}>Backup Account</button>
+              <button class="btn btn-secondary" onClick={this.getValue.bind(this)}>Backup Account</button>
               <p></p>
               <center><h3><b>Transfer Ownership</b></h3></center>
               <hr className="hr" />
               <center><h6>ETH Address</h6></center>
               <input type="text" id="transferaddress" name="TransferAddress" /><br />
-              <button onClick={this.getValue.bind(this)}>Transfer</button><br />
+              <button class="btn btn-secondary" onClick={this.getValue.bind(this)}>Transfer</button><br />
             </a>
         </div>
         <style jsx>{`
@@ -190,6 +192,78 @@ class Dapp extends React.Component {
           .hr{
             padding: 0px;
             margin: 0px;
+          }
+          .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+          }
+
+          .btn:hover, .btn:focus {
+            text-decoration: none;
+          }
+
+          .btn:focus, .btn.focus {
+            outline: 0;
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+                    box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+          }
+
+          .btn.disabled, .btn:disabled {
+            opacity: 0.65;
+          }
+
+          .btn:not(:disabled):not(.disabled) {
+            cursor: pointer;
+          }
+
+          .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
+            background-image: none;
+          }
+          .btn-secondary {
+            color: #212529;
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+          }
+          .btn-secondary:hover {
+            color: #212529;
+            background-color: #d3d9df;
+            border-color: #cbd3da;
+          }
+          .btn-secondary:focus, .btn-secondary.focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+          }
+          .btn-secondary.disabled, .btn-secondary:disabled {
+            color: #212529;
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+          }
+          .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active,
+          .show > .btn-secondary.dropdown-toggle {
+            color: #212529;
+            background-color: #cbd3da;
+            border-color: #c4ccd4;
+          }
+          .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus,
+          .show > .btn-secondary.dropdown-toggle:focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
           }
         `}</style>
 		</Layout>

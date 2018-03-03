@@ -1,14 +1,17 @@
 import Layout from '../components/Layout';
+import Link from 'next/link';
 
 const PRInfo = ({...props}) => {
+	let url = 'https://github.com/' + props.base.repo.owner.login + '/' + props.base.repo.name + '/pull/' + props.number;
 	return (
 		<div className="PullRequestInfo">
-			<h4>Repo Name: {props.name}</h4>
-			<h4>Repo_ID: {props.id}</h4>
-			<p>Repo Description: {props.description}</p>
-			<p>Owner UserName: {props.owner.login}</p>
-			<p>Owner_ID: {props.owner.id}</p>
+			<h4>PR Title: {props.title}</h4>
+			<Link href={url}><a>PR_ID: {props.id}</a></Link>
+			<p>Owner UserName: {props.user.login}</p>
+			<p>Owner_ID: {props.user.id}</p>
+			<p>PR_Number: {props.number}</p>
 			<p>Created At: {props.created_at}</p>
+			<p>Status: {props.state}</p>
 		</div>
 	)
 }
@@ -17,14 +20,14 @@ class Repo extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			repoData: undefined,
+			repoData: [],
 			loading: true,
 		}
 	}
 
 	async fetchPR() {
-		const res = await fetch(`https://api.github.com/repos/lightswarm124/OB-Create-Next-App/pull`);
-		const data = await res.json().then(console.log(data));
+		const res = await fetch(`https://api.github.com/repos/lightswarm124/OB-Create-Next-App/pulls`);
+		const data = await res.json();
 		return this.setState({
 			repoData: data,
 			loading: false,
@@ -38,7 +41,7 @@ class Repo extends React.Component {
 	render() {
 		return(
 			<Layout>
-				<h1>{this.state.repoData.id}</h1>
+				{this.state.repoData.map(PR => <PRInfo key={PR.id} {...PR} />)}
 			</Layout>
 		);
 	};

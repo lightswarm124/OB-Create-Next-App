@@ -4,8 +4,11 @@ import Link from 'next/link';
 const Repo = ({...props}) => {
 	return (
 		<div className="repo">
-			<h4>Repo Name: {props.name}</h4>
-			<h4>Repo_ID: {props.id}</h4>
+			<Link href={{ pathname: '/repo', query: { key: props.id } }}>
+				<a>Repo Name: {props.name}</a>
+			</Link>
+			<br />
+			<Link href='https://github.com/lightswarm124/OB-Create-Next-App/pulls'><a>Repo_ID: {props.id}</a></Link>
 			<p>Repo Description: {props.description}</p>
 			<p>Owner UserName: {props.owner.login}</p>
 			<p>Owner_ID: {props.owner.id}</p>
@@ -27,7 +30,7 @@ class Repos extends React.Component {
 
 	async fetchRepos() {
 		const res = await fetch(`https://api.github.com/users/lightswarm124/repos`);
-		const data = await res.json().then(console.log(data));
+		const data = await res.json();
 		return this.setState({
 			repos: data,
 			loading: false,

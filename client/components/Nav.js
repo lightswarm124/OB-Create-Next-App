@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ActiveLink from './ActiveLink';
 
 const links = [
 	{ href: 'https://github.com/lightswarm124', label: 'Login w/ Github' }
@@ -14,29 +15,29 @@ const Nav = () => (
 			<div className="collapse navbar-collapse">
 				<ul className="navbar-nav ml-auto">
 				  	<li className="nav-item">
-						<Link prefetch href="/">
-					  		<a className="nav-link">Home</a>
-						</Link>
-						<Link prefetch href="/account">
-							<a className="nav-link">Account</a>
-						</Link>
-						<Link prefetch href="/repositories">
-							<a className="nav-link">Repos</a>
-						</Link>
-						<Link prefetch href="/project">
-						  <a className="nav-link">Project</a>
-						</Link>
-						<Link prefetch href="/dashboard">
-							<a className="nav-link">Dashboard</a>
-						</Link>
+						<ActiveLink className="nav-link" href="/">
+					  		Home
+						</ActiveLink>
+						<ActiveLink className="nav-link" href="/account">
+							Account
+						</ActiveLink>
+						<ActiveLink className="nav-link" href="/repos">
+							Repos
+						</ActiveLink>
+						<ActiveLink className="nav-link" href="/project">
+						  Project
+						</ActiveLink>
+						<ActiveLink className="nav-link" href="/dashboard">
+							Dashboard
+						</ActiveLink>
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format
 					  		({ key, href, label }) => (
 								<li className="nav-item" key={key}>
-						  			<Link prefetch href={href}>
-										<a className="nav-link">{label}</a>
-						  			</Link>
+						  			<ActiveLink href={href}>
+										{label}
+						  			</ActiveLink>
 								</li>
 					  		)
 						)}
@@ -64,7 +65,7 @@ const Nav = () => (
 				display: flex;
 				padding: 6px 8px;
 			}
-			a {
+			ActiveLink {
 				color: #067df7;
 				text-decoration: none;
 				font-size: 13px;

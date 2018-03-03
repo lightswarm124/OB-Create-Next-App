@@ -104,7 +104,7 @@ class Dapp extends React.Component {
             <a className="card">
               <center><h3><b>Last 10 Transactions</b></h3></center>
               <hr className="hr" />
-              <table class="table table-hover" width="100%">
+              <table className="table table-hover" width="100%">
                 <thead>
                   <tr>
                     <th scope="col"><center>Block</center></th>
@@ -112,7 +112,7 @@ class Dapp extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-active">
+                  <tr className="table-active">
                     <td><center>*trunca..*</center></td>
                     <td><center>*trunca..*</center></td>
                   </tr>

@@ -5,7 +5,7 @@ const ERC20Lib = artifacts.require('./WIP/ERC20Lib.sol');
 const OpenBountyLib = artifacts.require('./WIP/OpenBountyLib.sol');
 const OpenBounty = artifacts.require('./WIP/OpenBounty.sol');
 
-module.exports = function (deployer,) {
+module.exports = function (deployer) {
     deployer.deploy(SimpleStorage);
 
     deployer.deploy(SafeMathLib);

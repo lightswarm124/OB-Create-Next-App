@@ -95,11 +95,46 @@ class Dapp extends React.Component {
                 <button className="btn btn-secondary" onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
             </a>
         </div>
+<<<<<<< HEAD
         <br />
         <b>OpenBounty Activity</b>
         <hr className="hr" /><br />
           <div className="row">
             <b>Blockchain Activity</b>
+=======
+        <div className="row">
+            <a className="card">
+              <center><h3><b>Last 10 Transactions</b></h3></center>
+              <hr className="hr" />
+              <table className="table table-hover" width="100%">
+                <thead>
+                  <tr>
+                    <th scope="col"><center>Block</center></th>
+                    <th scope="col"><center>Transaction</center></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="table-active">
+                    <td><center>*trunca..*</center></td>
+                    <td><center>*trunca..*</center></td>
+                  </tr>
+                  <tr>
+                  </tr>
+                </tbody>
+              </table>
+
+            </a>
+            <a className="card">
+              <center><h3>QRCode</h3></center>
+              <hr className="hr" />
+              <p></p>
+              <center><h6>Address</h6></center>
+              <hr className="hr" />
+              <center>0x0</center>
+            </a>
+            <a className="card">
+              <center><h3><b>Backup Account</b></h3></center>
+>>>>>>> 2aaf9f91d81516616f67e43fb11244a65b4a653b
               <hr className="hr" /><br />
                   <a className="cardfull" id="accountactivity" width="100%">
 

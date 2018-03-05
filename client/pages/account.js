@@ -2,7 +2,6 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-import QRCode from 'qrcode.react';
 class Dapp extends React.Component {
   state = {
 	  balance: 0,
@@ -52,6 +51,7 @@ class Dapp extends React.Component {
   }
   render () {
     const { web3, accounts } = this.props
+    console.log(accounts);
     return (
 		<Layout title="OpenBounty - Account Management" description="OpenBounty Account Management">
     <br />
@@ -61,23 +61,13 @@ class Dapp extends React.Component {
             <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
-              <p><center><QRCode value="{this.state.ethaddress}" /></center></p>
-              <center><h6>Address</h6></center>
-              <hr className="hr" />
-              <center>{this.state.ethaddress}</center>
-              <select>
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
-              <button class="btn btn-secondary" onClick={this.getValue.bind(this)}>Set Address</button>
-              <button class="btn btn-secondary" onClick={this.getValue.bind(this)}>Get Balances</button>
+              <AddressList addresses={accounts} />
+              <button className="btn btn-secondary" onClick={this.getValue.bind(this)}>Get Balances</button>
             </a>
             <a className="card" id="accountbalances">
               <center><h3><b>Balances</b></h3></center>
                 <hr className="hr" />
-                <center><h6>Current Balance</h6></center>
+                <center><h6>Contract Balance</h6></center>
                 <center>{this.state.balance}</center>
                 <hr className="hr" />
                 <center><h6>ETH Balance</h6></center>
@@ -85,7 +75,7 @@ class Dapp extends React.Component {
                 <hr className="hr" />
                 <center><h6>Token Balance</h6></center>
                 <center>{this.state.ownerTokenBalance}</center>
-                <button class="btn btn-secondary" onClick={this.storeValue}>Store 5 to Acct Bal.</button>
+                <button className="btn btn-secondary" onClick={this.storeValue}>Store 5 to Acct Bal.</button>
             </a>
             <a className="card" id="transfertokens">
               <center><h3><b>Transfer Tokens</b></h3></center>
@@ -101,18 +91,18 @@ class Dapp extends React.Component {
                 <hr className="hr" />
                 <center><h6>Token Supply</h6></center>
                 <center>{this.state.tokenSupply}</center>
-                <button class="btn btn-secondary" onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
-                <button class="btn btn-secondary" onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
+                <button className="btn btn-secondary" onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
+                <button className="btn btn-secondary" onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
             </a>
         </div>
         <br />
         <b>OpenBounty Activity</b>
         <hr className="hr" /><br />
-          <div class="row">
+          <div className="row">
             <b>Blockchain Activity</b>
               <hr className="hr" /><br />
                   <a className="cardfull" id="accountactivity" width="100%">
-                    someshithere
+
                   </a>
 
             </div>

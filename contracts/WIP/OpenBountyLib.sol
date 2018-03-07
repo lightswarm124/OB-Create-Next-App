@@ -60,13 +60,13 @@ library OpenBountyLib {
 
     function delManager (BountyStorage storage self, address _oldManager) public returns (bool success) {
         require (msg.sender == self.ProjectOwner);
-        self.ProjectManagers[_oldManager] = true;
+        self.ProjectManagers[_oldManager] = false;
         ManagerDeleted(_oldManager);
         return true;
     }
 
     function lockProjectBounty (BountyStorage storage self) public returns (bool success) {
-        require(self.ProjectManagers[msg.sender] == true && self.bountyStatus != lockState.Inactive);
+	require(self.ProjectManagers[msg.sender] == true && self.bountyStatus != lockState.Inactive);
         self.bountyStatus = lockState.Pending;
         self.lockBlockNumber = block.number;
         BountyPending(msg.sender, self.lockBlockNumber);

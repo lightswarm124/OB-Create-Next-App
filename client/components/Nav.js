@@ -30,6 +30,9 @@ const Nav = () => (
 						<ActiveLink className="nav-link" href="/dashboard">
 							Dashboard
 						</ActiveLink>
+						<ActiveLink prefetch href="/testOB">
+							<a className="nav-link">Test Contract</a>
+						</ActiveLink>
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format

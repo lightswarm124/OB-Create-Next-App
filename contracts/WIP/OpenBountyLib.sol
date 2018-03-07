@@ -18,9 +18,9 @@ library OpenBountyLib {
     }
 
     enum lockState {
-        Inactive,
         Pending,
-        Approved
+        Approved,
+        Inactive
     }
 
     function init (BountyStorage storage self) public {
@@ -35,11 +35,10 @@ library OpenBountyLib {
     }
 
     function isProjectOwner (BountyStorage storage self, address account) public view returns (bool isTrue) {
-        if (self.ProjectOwner != account) return false;
-    }
-
-    function checkBlockLock (BountyStorage storage self) public view returns (bool unlock) {
-        if (self.lockBlockNumber >= self.unlockBlockNumber) return false;
+        if (self.ProjectOwner == account){
+			return true;
+		}
+	 	return false;
     }
 
     function changeProjectOwner (BountyStorage storage self, address _newProjectOwner) public returns (address newOwner) {

@@ -30,8 +30,8 @@ const Nav = () => (
 						<ActiveLink className="nav-link" href="/dashboard">
 							Dashboard
 						</ActiveLink>
-						<ActiveLink prefetch href="/testOB">
-							<a className="nav-link">Test Contract</a>
+						<ActiveLink prefetch className="nav-link" href="/testOB">
+							Test Contract
 						</ActiveLink>
 				  	</li>
 				  	<ul>

@@ -31,7 +31,7 @@ const Nav = () => (
 							Dashboard
 						</ActiveLink>
 						<ActiveLink prefetch className="nav-link" href="/testOB">
-							Test Contract
+							OBContract
 						</ActiveLink>
 				  	</li>
 				  	<ul>

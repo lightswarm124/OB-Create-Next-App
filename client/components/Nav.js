@@ -44,6 +44,9 @@ const Nav = () => (
 						<ActiveLink className="nav-link" href="/dashboard">
 							Dashboard
 						</ActiveLink>
+						<ActiveLink prefetch className="nav-link" href="/testOB">
+							Test Contract
+						</ActiveLink>
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format

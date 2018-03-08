@@ -95,13 +95,7 @@ class Dapp extends React.Component {
                 <button className="btn btn-secondary" onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
             </a>
         </div>
-<<<<<<< HEAD
-        <br />
-        <b>OpenBounty Activity</b>
-        <hr className="hr" /><br />
-          <div className="row">
-            <b>Blockchain Activity</b>
-=======
+
         <div className="row">
             <a className="card">
               <center><h3><b>Last 10 Transactions</b></h3></center>
@@ -134,12 +128,10 @@ class Dapp extends React.Component {
             </a>
             <a className="card">
               <center><h3><b>Backup Account</b></h3></center>
->>>>>>> 2aaf9f91d81516616f67e43fb11244a65b4a653b
+
               <hr className="hr" /><br />
-                  <a className="cardfull" id="accountactivity" width="100%">
-
-                  </a>
-
+              <a className="cardfull" id="accountactivity" width="100%">
+              </a></a>
             </div>
           <br />
         <style jsx>{`

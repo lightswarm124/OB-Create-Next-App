@@ -7,6 +7,7 @@ const OpenBounty = artifacts.require('./WIP/OpenBounty.sol');
 const TokenRegistry = artifacts.require('./WIP/TokenRegistry.sol');
 
 
+
 module.exports = function (deployer) {
     deployer.deploy(SimpleStorage);
 

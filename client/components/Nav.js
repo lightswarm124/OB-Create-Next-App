@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import ActiveLink from './ActiveLink';
 
-
 const links = [
 	{ href: 'https://github.com/lightswarm124', label: <img src="../static/GitHub-Mark-120px-plus.png" width="30px" title="Login with GitHub" /> }
 ].map(link => {	// remap link.href + link.label into link.key
@@ -16,7 +15,7 @@ const Nav = () => (
 			<div className="collapse navbar-collapse">
 				<ul className="navbar-nav ml-auto">
 				  	<li className="nav-item">
-<<<<<<< HEAD
+
 
 						<Link prefetch href="/account">
 							<a className="nav-link"><img src="../static/Account.png" width="30px" title="Account Management" /></a>
@@ -30,7 +29,6 @@ const Nav = () => (
 						<Link prefetch href="/settings">
 							<a className="nav-link"><img src="../static/Settings.png" width="30px" title="OpenBounty Settings" /></a>
 						</Link>
-=======
 						<ActiveLink className="nav-link" href="/">
 					  		Home
 						</ActiveLink>
@@ -46,21 +44,16 @@ const Nav = () => (
 						<ActiveLink className="nav-link" href="/dashboard">
 							Dashboard
 						</ActiveLink>
->>>>>>> 2aaf9f91d81516616f67e43fb11244a65b4a653b
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format
 					  		({ key, href, label }) => (
 								<li className="nav-item" key={key}>
-<<<<<<< HEAD
-						  			<Link prefetch href={href}>
-										<a className="nav-link"><b>{label}</b></a>
-						  			</Link>
-=======
+
 						  			<ActiveLink href={href}>
 										{label}
 						  			</ActiveLink>
->>>>>>> 2aaf9f91d81516616f67e43fb11244a65b4a653b
+
 								</li>
 					  		)
 						)}

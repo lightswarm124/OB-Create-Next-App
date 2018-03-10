@@ -59,13 +59,35 @@ class Dapp extends React.Component {
   render () {
     const { web3, accounts } = this.props
     return (
+		<Layout title="OpenBounty - Repository Management" description="Decentralized Application">
+    <div></div>
+    <div class="row">
+    <b>Repository Management</b>
+      <table width="100%">
+      <tr>
+        <td width="50%"><b>GitHub Repo Search</b></td>
+        <td width="50%"><b>GitHub User Search</b></td>
+      </tr>
+      <tr>
+        <td width="50%" valign="top"><GitSearch /></td>
+        <td width="50%" valign="top"><GitData /></td>
+      </tr>
+      </table>
+
+
+      </div>
+
 		<Layout title="Dapp" description="Decentralized Application">
 	      <div>
-            <h2><b>Repository Management</b></h2>
+            <h2>Repository Management</h2>
             <hr className="hr" />
-            <p>&nbsp;Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
+            <p>Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
             <div>
-            <h4>&nbsp;&nbsp;<b>Owned GitHub Repositories</b></h4>
+            <h4>Owned GitHub Repositories</h4>
+
+              <GitSearch />
+
+
             <hr className="hr" />
             <table class="table table-hover" width="100%">
               <thead>
@@ -90,7 +112,7 @@ class Dapp extends React.Component {
             </div>
             <p />
             <div>
-            <h4>&nbsp;&nbsp;<b>Recent GitHub Activity</b></h4>
+            <h4>Recent GitHub Activity</h4>
             <hr className="hr" />
             <table class="table table-hover" width="100%">
               <thead>
@@ -115,13 +137,17 @@ class Dapp extends React.Component {
             </div>
 	      </div>
 
+        <div>
+          <RepositoryInfo />
+        </div>
+
         <style jsx>{`
           .hero {
             width: 100%;
-            color: #333;
+            color: #000;
           }
           .title {
-            margin: 0;
+            margin: 2 px;
             width: 100%;
             padding-top: 80px;
             line-height: 1.15;
@@ -137,9 +163,20 @@ class Dapp extends React.Component {
             flex-direction: row;
             justify-content: space-around;
           }
+          .column {
+              float: left;
+              width: 50%;
+              padding: 10px;
+
+          }
+          .row:after {
+              content: "";
+              display: table;
+              clear: both;
+          }
           .card {
             padding: 10px 10px 10px;
-            width: 220px;
+            width: 40%;
             text-align: left;
             text-decoration: none;
             color: #9B9B9B;
@@ -166,6 +203,79 @@ class Dapp extends React.Component {
           .hr{
             padding: 0px;
             margin: 0px;
+            color: #212529;
+          }
+          .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+          }
+
+          .btn:hover, .btn:focus {
+            text-decoration: none;
+          }
+
+          .btn:focus, .btn.focus {
+            outline: 0;
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+                    box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+          }
+
+          .btn.disabled, .btn:disabled {
+            opacity: 0.65;
+          }
+
+          .btn:not(:disabled):not(.disabled) {
+            cursor: pointer;
+          }
+
+          .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
+            background-image: none;
+          }
+          .btn-secondary {
+            color: #212529;
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+          }
+          .btn-secondary:hover {
+            color: #212529;
+            background-color: #d3d9df;
+            border-color: #cbd3da;
+          }
+          .btn-secondary:focus, .btn-secondary.focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+          }
+          .btn-secondary.disabled, .btn-secondary:disabled {
+            color: #212529;
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+          }
+          .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active,
+          .show > .btn-secondary.dropdown-toggle {
+            color: #212529;
+            background-color: #cbd3da;
+            border-color: #c4ccd4;
+          }
+          .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus,
+          .show > .btn-secondary.dropdown-toggle:focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
           }
         `}</style>
 		</Layout>

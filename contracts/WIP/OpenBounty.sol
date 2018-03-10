@@ -104,7 +104,6 @@ contract OpenBounty {
     }
 
 	function () public payable {
-		require(bounty.bountyStatus != OpenBountyLib.lockState.Inactive);
 		BountyFunded(msg.sender, msg.value);
 	}
 

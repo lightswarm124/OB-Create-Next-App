@@ -19,8 +19,7 @@ library OpenBountyLib {
 
     enum lockState {
         Pending,
-        Approved,
-        Inactive
+        Approved
     }
 
     function init (BountyStorage storage self) public {
@@ -66,7 +65,7 @@ library OpenBountyLib {
     }
 
     function lockProjectBounty (BountyStorage storage self) public returns (bool success) {
-	require(self.ProjectManagers[msg.sender] == true && self.bountyStatus != lockState.Inactive);
+	require(self.ProjectManagers[msg.sender] == true);
         self.bountyStatus = lockState.Pending;
         self.lockBlockNumber = block.number;
         BountyPending(msg.sender, self.lockBlockNumber);
@@ -74,7 +73,7 @@ library OpenBountyLib {
     }
 
     function unlockProjectBounty (BountyStorage storage self) public returns (bool success) {
-        require(msg.sender == self.ProjectOwner && self.bountyStatus != lockState.Inactive);
+        require(msg.sender == self.ProjectOwner);
         self.bountyStatus = lockState.Approved;
         self.unlockBlockNumber = block.number;
         BountyPending(msg.sender, self.unlockBlockNumber);
@@ -98,7 +97,6 @@ library OpenBountyLib {
         require(self.pullRequests[_pullRequestID].pullRequestStatus == lockState.Pending && self.ProjectManagers[msg.sender] == true && self.pullRequests[_pullRequestID].approveManager == address(0));
         self.pullRequests[_pullRequestID].approveManager = msg.sender;
         self.pullRequests[_pullRequestID].pullRequestStatus = lockState.Approved;
-        if (self.bountyStatus == lockState.Inactive) self.bountyStatus = lockState.Pending;
         BountyAccepted(msg.sender, self.pullRequests[_pullRequestID].bountyHunter, self.pullRequests[_pullRequestID].bountyValue);
         return true;
     }

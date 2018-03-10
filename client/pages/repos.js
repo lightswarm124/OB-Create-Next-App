@@ -1,5 +1,7 @@
-import Layout from '../components/Layout';
 import Link from 'next/link';
+import Layout from '../components/Layout';
+import GitSearch from '../components/GitSearch';
+import GitData from '../components/GitData';
 
 const Repo = ({...props}) => {
 	return (

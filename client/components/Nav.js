@@ -29,20 +29,8 @@ const Nav = () => (
 						<Link prefetch href="/settings">
 							<a className="nav-link"><img src="../static/Settings.png" width="30px" title="OpenBounty Settings" /></a>
 						</Link>
-						<ActiveLink className="nav-link" href="/">
-					  		Home
-						</ActiveLink>
-						<ActiveLink className="nav-link" href="/account">
-							Account
-						</ActiveLink>
 						<ActiveLink className="nav-link" href="/repos">
 							Repos
-						</ActiveLink>
-						<ActiveLink className="nav-link" href="/project">
-						  Project
-						</ActiveLink>
-						<ActiveLink className="nav-link" href="/dashboard">
-							Dashboard
 						</ActiveLink>
 						<ActiveLink prefetch className="nav-link" href="/testOB">
 							Test Contract
@@ -52,7 +40,6 @@ const Nav = () => (
 						{links.map( // remap links array into HTML format
 					  		({ key, href, label }) => (
 								<li className="nav-item" key={key}>
-
 						  			<ActiveLink href={href}>
 										{label}
 						  			</ActiveLink>

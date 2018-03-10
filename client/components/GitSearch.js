@@ -33,15 +33,10 @@ class GitSearch extends React.Component {
     onClick(event) {
 
         searchTerm = this.GitSearch.value;
-<<<<<<< HEAD
-        let endpoint = 'https://api.github.com/search/commits?q=author:' + searchTerm;
 
-        // https://api.github.com/search/commits?q=author:  + searchTerm (URL for project author search)
-=======
         let endpoint = 'https://api.github.com/search/repositories?q=' + searchTerm;
 
         // https://api.github.com/search/commits?q=author:lightswarm124  + searchTerm (URL for project author search)
->>>>>>> steve
         // https://api.github.com/search/repositories?sort=stars&order=desc&q= (default url)
         console.log(searchTerm);
         fetch(endpoint)
@@ -54,8 +49,5 @@ class GitSearch extends React.Component {
     }
 }
 
-<<<<<<< HEAD
+
 export default GitSearch;
-=======
-export default GitSearch; 
->>>>>>> steve

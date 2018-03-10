@@ -48,8 +48,5 @@ class GitSearch extends React.Component {
     }
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 3fa8c208dfcc5146cbfa0ad1f87bcb276265b20b
 export default GitSearch;

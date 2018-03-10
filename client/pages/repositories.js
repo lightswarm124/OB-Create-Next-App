@@ -7,7 +7,6 @@ import GitSearch from '../components/GitSearch';
 import GitData from '../components/GitData';
 
 
-
 class Dapp extends React.Component {
   state = {
 	  balance: 0,
@@ -60,6 +59,7 @@ class Dapp extends React.Component {
   render () {
     const { web3, accounts } = this.props
     return (
+<<<<<<< HEAD
 		<Layout title="OpenBounty - Repository Management" description="Decentralized Application">
     <div></div>
     <div class="row">
@@ -77,13 +77,79 @@ class Dapp extends React.Component {
 
 
       </div>
+=======
+		<Layout title="Dapp" description="Decentralized Application">
+	      <div>
+            <h2>Repository Management</h2>
+            <hr className="hr" />
+            <p>Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
+            <div>
+            <h4>Owned GitHub Repositories</h4>
+
+              <GitSearch />
+
+
+            <hr className="hr" />
+            <table class="table table-hover" width="100%">
+              <thead>
+                <tr>
+                  <th scope="col"><center>Repository Name</center></th>
+                  <th scope="col"><center>ETH Address</center></th>
+                  <th scope="col"><center>Token Supply</center></th>
+                  <th scope="col"><center>Registration</center></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active">
+                  <td><center>Some-Reponame-v0.01</center></td>
+                  <td><center>*ETH ADDRES HERE*</center></td>
+                  <td><center>10/18</center></td>
+                  <td><center><button onClick={this.getValue.bind(this)}>Register</button></center></td>
+                </tr>
+                <tr>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            <p />
+            <div>
+            <h4>Recent GitHub Activity</h4>
+            <hr className="hr" />
+            <table class="table table-hover" width="100%">
+              <thead>
+                <tr>
+                  <th scope="col"><center>Repository Name</center></th>
+                  <th scope="col"><center>Timestamp</center></th>
+                  <th scope="col"><center>Action</center></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-active">
+                  <td><center>Some-Reponame-v0.01</center></td>
+                  <td><center>02-18-2018-01:15:01</center></td>
+                  <td><center>(pull/merge/etc)</center></td>
+                </tr>
+                <tr>
+
+                </tr>
+
+              </tbody>
+            </table>
+            </div>
+	      </div>
+
+        <div>
+          <RepositoryInfo />
+        </div>
+
+>>>>>>> 3fa8c208dfcc5146cbfa0ad1f87bcb276265b20b
         <style jsx>{`
           .hero {
             width: 100%;
-            color: #333;
+            color: #000;
           }
           .title {
-            margin: 0;
+            margin: 2 px;
             width: 100%;
             padding-top: 80px;
             line-height: 1.15;

@@ -2,6 +2,9 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
+import GitSearch from '../components/GitSearch';
+import RepositoryInfo from '../components/RepositoryInfo';
+import GitData from '../components/GitData';
 
 class Dapp extends React.Component {
   state = {
@@ -56,6 +59,7 @@ class Dapp extends React.Component {
     const { web3, accounts } = this.props
     return (
 		<Layout title="Dapp" description="Decentralized Application">
+
 	      <div>
             <h2><b>Repository Management</b></h2>
             <hr className="hr" />
@@ -110,7 +114,10 @@ class Dapp extends React.Component {
             </table>
             </div>
 	      </div>
-
+        <div>
+          <GitData />
+          <RepositoryInfo />
+        </div>
         <style jsx>{`
           .hero {
             width: 100%;

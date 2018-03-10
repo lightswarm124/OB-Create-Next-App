@@ -28,7 +28,6 @@ class Dapp extends React.Component {
     let response = await contract.get.call({ from: accounts[0] });
 	let etherBal = await web3.eth.getBalance(accounts[0]);
   let checkBlock = await OBContract.checkBlockLock();
-
   //response = response.toNumber();
 	console.log(response);
 	console.log(etherBal);
@@ -43,29 +42,27 @@ class Dapp extends React.Component {
     let tokenBalanceOf = await OBContract.balanceOf(accounts[1]);
     this.setState({ tokenBalance: tokenBalanceOf.toNumber(), ownerTokenBalance: ownerTokenBalanceOf.toNumber() })
   }
-
   projectInfo = async () => {
     const { accounts, contract, web3, OBContract } = this.props
   let owner = await OBContract.projectOwner();
   //response = response.toNumber();
   console.log(owner);
   this.setState({ projectowner: owner })
-
   }
   render () {
     const { web3, accounts } = this.props
     return (
-		<Layout title="Dapp" description="Decentralized Application">
+		<Layout title="OpenBounty - Account Management" description="OpenBounty Account Management">
 	      <div>
-            <h2>Account Management</h2>
-            <hr className="hr" />
+
 	      </div>
+
         <div className="row">
-            <a className="card">
+            <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
             </a>
-            <a className="card">
+            <a className="card" id="accountbalances">
               <center><h3><b>Balances</b></h3></center>
                 <hr className="hr" />
                 <center><h6>ETH Address</h6></center>
@@ -82,7 +79,7 @@ class Dapp extends React.Component {
                 <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
                 <button onClick={this.getValue.bind(this)}>Get Balances</button>
             </a>
-            <a className="card">
+            <a className="card" id="transfertokens">
               <center><h3><b>Transfer Tokens</b></h3></center>
                 <hr className="hr" />
                 <center><h6>ETH Address</h6></center>
@@ -101,7 +98,15 @@ class Dapp extends React.Component {
             </a>
         </div>
         <div className="row">
-            <a className="card">
+        <a className="card" id="qrcode">
+          <center><h3>QRCode</h3></center>
+          <hr className="hr" />
+          <p><center><img src="../static/qrcode.png" width="180px" /></center></p>
+          <center><h6>Address</h6></center>
+          <hr className="hr" />
+          <center>0x0</center>
+        </a>
+            <a className="card" id="last10transactions">
               <center><h3><b>Last 10 Transactions</b></h3></center>
               <hr className="hr" />
               <table class="table table-hover" width="100%">
@@ -120,17 +125,9 @@ class Dapp extends React.Component {
                   </tr>
                 </tbody>
               </table>
+            </a>
 
-            </a>
-            <a className="card">
-              <center><h3>QRCode</h3></center>
-              <hr className="hr" />
-              <p></p>
-              <center><h6>Address</h6></center>
-              <hr className="hr" />
-              <center>0x0</center>
-            </a>
-            <a className="card">
+            <a className="card" id="backupaccount">
               <center><h3><b>Backup Account</b></h3></center>
               <hr className="hr" /><br />
               <button onClick={this.getValue.bind(this)}>Backup Account</button>
@@ -138,10 +135,8 @@ class Dapp extends React.Component {
               <center><h3><b>Transfer Ownership</b></h3></center>
               <hr className="hr" />
               <center><h6>ETH Address</h6></center>
-              <input type="text" name="TransferAddress" /><br />
+              <input type="text" id="transferaddress" name="TransferAddress" /><br />
               <button onClick={this.getValue.bind(this)}>Transfer</button><br />
-
-
             </a>
         </div>
         <style jsx>{`
@@ -171,22 +166,26 @@ class Dapp extends React.Component {
             width: 220px;
             text-align: left;
             text-decoration: none;
-            color: #434343;
+            color: #9B9B9B;
             border: 1px solid #9B9B9B;
           }
           .card:hover {
-            border-color: #067df7;
+            border-color: #b58e12;
           }
           .card h3 {
             margin: 0;
-            color: #067df7;
+            color: #343a40;
             font-size: 18px;
+          }
+          .card h6 {
+            margin: 0;
+            color: #343a40;
           }
           .card p {
             margin: 0;
             padding: 12px 0 0;
             font-size: 13px;
-            color: #333;
+            color: #9B9B9B;
           }
           .hr{
             padding: 0px;

@@ -62,9 +62,9 @@ class Dapp extends React.Component {
     return (
 		<Layout title="Dapp" description="Decentralized Application">
 	      <div>
-            <h2>Repository Management</h2>
+            <h2><b>Repository Management</b></h2>
             <hr className="hr" />
-            <p>Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
+            <p>&nbsp;Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
             <div>
             <h4>Owned GitHub Repositories</h4>
             <GitSearch />
@@ -150,22 +150,26 @@ class Dapp extends React.Component {
             width: 220px;
             text-align: left;
             text-decoration: none;
-            color: #434343;
+            color: #9B9B9B;
             border: 1px solid #9B9B9B;
           }
           .card:hover {
-            border-color: #067df7;
+            border-color: #b58e12;
           }
           .card h3 {
             margin: 0;
-            color: #067df7;
+            color: #343a40;
             font-size: 18px;
+          }
+          .card h6 {
+            margin: 0;
+            color: #343a40;
           }
           .card p {
             margin: 0;
             padding: 12px 0 0;
             font-size: 13px;
-            color: #333;
+            color: #9B9B9B;
           }
           .hr{
             padding: 0px;

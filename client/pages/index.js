@@ -5,28 +5,25 @@ export default () => (
   <Layout title="Home" description="Create-Next-App">
 
     <div className="hero">
-      <h1 className="title">Welcome to Next!</h1>
-      <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
-
+      <h1 className="title">Welcome to OpenBounty v.0.30a</h1>
+      <p className="description">OpenBounty is a Decentralized Network that connects people-to-projects and projects-to-people.</p>
       <div className="row">
         <Link href="/OBDapp">
           <a className="card">
-            <h3>OpenBounty App &rarr;</h3>
+            <h3>Whitepaper &rarr;</h3>
             <p>Learn more about Ethereum Accounts in their example</p>
           </a>
         </Link>
 		<Link href="/dapp">
 		  <a className="card">
-			<h3>Blockchain dApp &rarr;</h3>
-			<p>Sample Ethereum DApp</p>
+			<h3>Documentation &rarr;</h3>
+			<p>Learn how to install OpenBounty-Server.  Learn how to use the OpenBounty platform.</p>
 		  </a>
 		</Link>
         <Link href="/dashboard">
           <a className="card">
-            <h3>Dashboard &rarr;</h3>
-            <p>
-              Check out the OpenBounty Dashboard
-            </p>
+            <h3>Tutorials &rarr;</h3>
+            <p>Check out OpenBounty Video Tutorials</p>
           </a>
         </Link>
       </div>

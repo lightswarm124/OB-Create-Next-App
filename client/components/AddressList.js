@@ -1,17 +1,18 @@
+import QRCode from 'qrcode.react';
 export default class AddressList extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.setAddress = this.setAddress.bind(this);
 		this.setIndex = this.setIndex.bind(this);
 		this.state = {
-			activeAddress: props.addresses.accounts[0],
+			activeAddress: props.addresses[0],
 			accountIndex: 0
 		};
 	}
 
 	setAddress = async (accIndex) => {
 		const { addresses } = this.props;
-		this.setState({ activeAddress: addresses.accounts[accIndex] });
+		this.setState({ activeAddress: addresses[accIndex] });
 	}
 
 	setIndex(event) {
@@ -22,18 +23,19 @@ export default class AddressList extends React.PureComponent {
 	render() {
 		const { addresses } = this.props
 		console.log(addresses);
-		console.log(addresses.accounts);
-		console.log(addresses.accounts.length);
+		console.log(addresses.length);
 
 		return(
 			<div className="addressList">
-				<div>Active Address: {this.state.activeAddress}</div>
-				<button onClick={ () => this.setAddress(this.state.accountIndex) }>Set Address</button>
+  			<center><QRCode value={this.state.activeAddress} /></center>
+				<div><center><b>Active Address</b></center>
+				{this.state.activeAddress}</div>
+				<button onClick={ () => this.setAddress(this.state.accountIndex).bind(this) }>Set Address</button>
 				<br />
 				<br />
 				<p>Available Address Accounts</p>
 				<select onChange={this.setIndex}>
-					{ addresses.accounts.map((address, i) => (
+					{ addresses.map((address, i) => (
 						<option key={i} value={i}>{i}: {address}</option>
 					))}
 				</select>

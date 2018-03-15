@@ -1,5 +1,5 @@
 import Link from 'next/link';
-
+import ActiveLink from './ActiveLink';
 
 const links = [
 	{ href: 'https://github.com/lightswarm124', label: <img src="../static/GitHub-Mark-120px-plus.png" width="30px" title="Login with GitHub" /> }
@@ -16,6 +16,7 @@ const Nav = () => (
 				<ul className="navbar-nav ml-auto">
 				  	<li className="nav-item">
 
+
 						<Link prefetch href="/account">
 							<a className="nav-link"><img src="../static/Account.png" width="30px" title="Account Management" /></a>
 						</Link>
@@ -28,14 +29,21 @@ const Nav = () => (
 						<Link prefetch href="/settings">
 							<a className="nav-link"><img src="../static/Settings.png" width="30px" title="OpenBounty Settings" /></a>
 						</Link>
+						<ActiveLink className="nav-link" href="/repos">
+							Repos
+						</ActiveLink>
+						<ActiveLink prefetch className="nav-link" href="/testOB">
+							Test Contract
+						</ActiveLink>
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format
 					  		({ key, href, label }) => (
 								<li className="nav-item" key={key}>
-						  			<Link prefetch href={href}>
-										<a className="nav-link"><b>{label}</b></a>
-						  			</Link>
+						  			<ActiveLink href={href}>
+										{label}
+						  			</ActiveLink>
+
 								</li>
 					  		)
 						)}
@@ -63,7 +71,7 @@ const Nav = () => (
 				display: flex;
 				padding: 6px 8px;
 			}
-			a {
+			ActiveLink {
 				color: #067df7;
 				text-decoration: none;
 				font-size: 13px;

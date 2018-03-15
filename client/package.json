@@ -8,6 +8,7 @@
 		"link-contracts": "cd lib && ln -s ../../build/contracts contracts"
 	},
 	"dependencies": {
+		"fs": "^0.0.1-security",
 		"isomorphic-fetch": "^2.2.1",
 		"next": "^5.0.0",
 		"prop-types": "^15.6.0",

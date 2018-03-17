@@ -2,7 +2,6 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-
 class Dapp extends React.Component {
   state = {
 	  balance: 0,
@@ -10,7 +9,8 @@ class Dapp extends React.Component {
     projectowner: 0,
     ownerTokenBalance:0,
 	  tokenBalance: 0,
-	  totalSupply: 0
+	  totalSupply: 0,
+    ethaddress: 0x0
   }
 
   storeValue = async () => {
@@ -51,24 +51,23 @@ class Dapp extends React.Component {
   }
   render () {
     const { web3, accounts } = this.props
+    console.log(accounts);
     return (
 		<Layout title="OpenBounty - Account Management" description="OpenBounty Account Management">
-	      <div>
-
-	      </div>
-
+    <br />
+    <b>Account Management</b>
+    <hr className="hr" />
         <div className="row">
             <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
+              <AddressList addresses={accounts} />
+              <button className="btn btn-secondary" onClick={this.getValue.bind(this)}>Get Balances</button>
             </a>
             <a className="card" id="accountbalances">
               <center><h3><b>Balances</b></h3></center>
                 <hr className="hr" />
-                <center><h6>ETH Address</h6></center>
-                <center>0x0</center>
-                <hr className="hr" />
-                <center><h6>Current Balance</h6></center>
+                <center><h6>Contract Balance</h6></center>
                 <center>{this.state.balance}</center>
                 <hr className="hr" />
                 <center><h6>ETH Balance</h6></center>
@@ -76,8 +75,7 @@ class Dapp extends React.Component {
                 <hr className="hr" />
                 <center><h6>Token Balance</h6></center>
                 <center>{this.state.ownerTokenBalance}</center>
-                <button onClick={this.storeValue}>Store 5 to Acct Bal.</button>
-                <button onClick={this.getValue.bind(this)}>Get Balances</button>
+                <button className="btn btn-secondary" onClick={this.storeValue}>Store 5 to Acct Bal.</button>
             </a>
             <a className="card" id="transfertokens">
               <center><h3><b>Transfer Tokens</b></h3></center>
@@ -93,23 +91,16 @@ class Dapp extends React.Component {
                 <hr className="hr" />
                 <center><h6>Token Supply</h6></center>
                 <center>{this.state.tokenSupply}</center>
-                <button onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
-                <button onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
+                <button className="btn btn-secondary" onClick={() => this.transferTokens(accounts[0], accounts[1])}>Transfer to User</button>
+                <button className="btn btn-secondary" onClick={() => this.transferTokens(accounts[1], accounts[0])}>Transfer to Owner</button>
             </a>
         </div>
+
         <div className="row">
-        <a className="card" id="qrcode">
-          <center><h3>QRCode</h3></center>
-          <hr className="hr" />
-          <p><center><img src="../static/qrcode.png" width="180px" /></center></p>
-          <center><h6>Address</h6></center>
-          <hr className="hr" />
-          <center>0x0</center>
-        </a>
-            <a className="card" id="last10transactions">
+            <a className="card">
               <center><h3><b>Last 10 Transactions</b></h3></center>
               <hr className="hr" />
-              <table class="table table-hover" width="100%">
+              <table className="table table-hover" width="100%">
                 <thead>
                   <tr>
                     <th scope="col"><center>Block</center></th>
@@ -117,7 +108,7 @@ class Dapp extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="table-active">
+                  <tr className="table-active">
                     <td><center>*trunca..*</center></td>
                     <td><center>*trunca..*</center></td>
                   </tr>
@@ -125,20 +116,24 @@ class Dapp extends React.Component {
                   </tr>
                 </tbody>
               </table>
-            </a>
 
-            <a className="card" id="backupaccount">
-              <center><h3><b>Backup Account</b></h3></center>
-              <hr className="hr" /><br />
-              <button onClick={this.getValue.bind(this)}>Backup Account</button>
-              <p></p>
-              <center><h3><b>Transfer Ownership</b></h3></center>
-              <hr className="hr" />
-              <center><h6>ETH Address</h6></center>
-              <input type="text" id="transferaddress" name="TransferAddress" /><br />
-              <button onClick={this.getValue.bind(this)}>Transfer</button><br />
             </a>
-        </div>
+            <a className="card">
+              <center><h3>QRCode</h3></center>
+              <hr className="hr" />
+              <p></p>
+              <center><h6>Address</h6></center>
+              <hr className="hr" />
+              <center>0x0</center>
+            </a>
+            <a className="card">
+              <center><h3><b>Backup Account</b></h3></center>
+
+              <hr className="hr" /><br />
+              <a className="cardfull" id="accountactivity" width="100%">
+              </a></a>
+            </div>
+          <br />
         <style jsx>{`
           .hero {
             width: 100%;
@@ -187,9 +182,108 @@ class Dapp extends React.Component {
             font-size: 13px;
             color: #9B9B9B;
           }
+        }
+        .cardfull {
+          padding: 10px 10px 10px;
+          width: 100%;
+          text-align: left;
+          text-decoration: none;
+          color: #9B9B9B;
+          border: 1px solid #9B9B9B;
+        }
+        .cardfull:hover {
+          border-color: #b58e12;
+        }
+        .cardfull h3 {
+          margin: 0;
+          color: #343a40;
+          font-size: 18px;
+        }
+        .cardfull h6 {
+          margin: 0;
+          color: #343a40;
+        }
+        .cardfull p {
+          margin: 0;
+          padding: 12px 0 0;
+          font-size: 13px;
+          color: #9B9B9B;
+        }
           .hr{
             padding: 0px;
             margin: 0px;
+          }
+          .btn {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                -ms-user-select: none;
+                    user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+          }
+
+          .btn:hover, .btn:focus {
+            text-decoration: none;
+          }
+
+          .btn:focus, .btn.focus {
+            outline: 0;
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+                    box-shadow: 0 0 0 0.2rem rgba(47, 164, 231, 0.25);
+          }
+
+          .btn.disabled, .btn:disabled {
+            opacity: 0.65;
+          }
+
+          .btn:not(:disabled):not(.disabled) {
+            cursor: pointer;
+          }
+
+          .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
+            background-image: none;
+          }
+          .btn-secondary {
+            color: #212529;
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+          }
+          .btn-secondary:hover {
+            color: #212529;
+            background-color: #d3d9df;
+            border-color: #cbd3da;
+          }
+          .btn-secondary:focus, .btn-secondary.focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+          }
+          .btn-secondary.disabled, .btn-secondary:disabled {
+            color: #212529;
+            background-color: #e9ecef;
+            border-color: #e9ecef;
+          }
+          .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active,
+          .show > .btn-secondary.dropdown-toggle {
+            color: #212529;
+            background-color: #cbd3da;
+            border-color: #c4ccd4;
+          }
+          .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus,
+          .show > .btn-secondary.dropdown-toggle:focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(233, 236, 239, 0.5);
           }
         `}</style>
 		</Layout>

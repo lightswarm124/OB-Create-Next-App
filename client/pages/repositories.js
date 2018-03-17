@@ -2,9 +2,10 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
+import RepositoryInfo from '../components/repositoryInfo';
 import GitSearch from '../components/GitSearch';
-import RepositoryInfo from '../components/RepositoryInfo';
 import GitData from '../components/GitData';
+
 
 class Dapp extends React.Component {
   state = {

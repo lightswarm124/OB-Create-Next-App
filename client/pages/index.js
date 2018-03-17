@@ -2,31 +2,14 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 
 export default () => (
-  <Layout title="Home" description="Create-Next-App">
+  <Layout title="OpenBounty - Home" description="OpenBounty Home Screen">
 
     <div className="hero">
-      <h1 className="title">Welcome to OpenBounty v.0.30a</h1>
-      <p className="description">OpenBounty is a Decentralized Network that connects people-to-projects and projects-to-people.</p>
-      <div className="row">
-        <Link href="/OBDapp">
-          <a className="card">
-            <h3>Whitepaper &rarr;</h3>
-            <p>Learn more about Ethereum Accounts in their example</p>
-          </a>
-        </Link>
-		<Link href="/dapp">
-		  <a className="card">
-			<h3>Documentation &rarr;</h3>
-			<p>Learn how to install OpenBounty-Server.  Learn how to use the OpenBounty platform.</p>
-		  </a>
-		</Link>
-        <Link href="/dashboard">
-          <a className="card">
-            <h3>Tutorials &rarr;</h3>
-            <p>Check out OpenBounty Video Tutorials</p>
-          </a>
-        </Link>
-      </div>
+      <br />
+      <center><img src="../static/OpenBounty-LogoLarge.png" title="Welcome to OpenBounty" /></center>
+      <center><img src="../static/Text_Black.png" title="OpenBounty" /></center>
+      <center><b>a decentralized network that connects people-to-projects and projects-to-people</b></center>
+
     </div>
 
     <style jsx>{`

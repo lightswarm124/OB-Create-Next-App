@@ -12,12 +12,7 @@ class GitSearch extends React.Component {
     render() {
         return(
             <div>
-                <form>
-                <input type="text" className="gitsearch"  ref={(input) => { this.GitSearch = input; }}/>
-                <button onClick={this.onClick}>Search</button>
-                </form>
                 <div className="foundRepo">{this.props.user}</div>
-                <h2>Repositories</h2>
                 <ul>
                 { this.state.repositories.map( ( item, index ) => (
                     <li key={ index }>
@@ -26,6 +21,10 @@ class GitSearch extends React.Component {
                     </li>
                 )) }
                 </ul>
+                <form>
+                <input type="text" className="gitsearch"  ref={(input) => { this.GitSearch = input; }}/>
+                <button onClick={this.onClick}>Search</button>
+                </form>
             </div>
             );
     }

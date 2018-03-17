@@ -28,6 +28,12 @@ const Head = (props) => (
 	    <meta property="og:image:width" content="1200" />
 	    <meta property="og:image:height" content="630" />
       <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sidebar/3.3.2/jquery.sidebar.min.js"></script>
+
   	</NextHead>
 );
 

@@ -32,24 +32,18 @@ class Shelf extends React.Component {
     return data.map((repo, idx) => {
       const className = (idx === 0) ? 'c-shelf-repo c-shelf-repo--active': 'c-shelf-repo';
       return (
-<<<<<<< HEAD
-=======
 
->>>>>>> mike
       <div id="github-info">
         <li className={ className } key={ idx }>
 					<div className="repo_details">
-	          <h4 className="repo_name">{ repo.name }</h4>
+	          <a href="{repo_url}" ><h4 className="repo_name">{ repo.name }</h4></a>
   	        <p className="repo_description">{ repo.description }</p>
             <p className="repo_created_at"> { repo.created_at } </p>
 					</div>
           { (repo.owner) ? this.renderStats(repo.owner.login, repo.name): null }
         </li>
       </div>
-<<<<<<< HEAD
-=======
-      
->>>>>>> mike
+
       )
     })
   }
@@ -103,13 +97,9 @@ class GitData extends React.Component {
             data={(this.state.repos) ? this.state.repos: null}
             interval={ this.state.shelfInterval }
            ></Shelf>
-<<<<<<< HEAD
-          <input className="app-user-input" placeholder="github user handle" value={ this.state.user }/><br/>
-          <button className="app-user-change" onClick={this.updateUser.bind(this)}>Update user</button>
-=======
           <input className="app-user-input" placeholder="" value={ this.state.user }/>
           <button className="app-user-change" onClick={this.updateUser.bind(this)}>Search</button>
->>>>>>> mike
+
         </div>
      </article>
     )

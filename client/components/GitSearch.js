@@ -33,10 +33,7 @@ class GitSearch extends React.Component {
     onClick(event) {
 
         searchTerm = this.GitSearch.value;
-<<<<<<< HEAD
-=======
 
->>>>>>> mike
         let endpoint = 'https://api.github.com/search/repositories?q=' + searchTerm;
 
         // https://api.github.com/search/commits?q=author:lightswarm124  + searchTerm (URL for project author search)
@@ -52,9 +49,5 @@ class GitSearch extends React.Component {
     }
 }
 
-<<<<<<< HEAD
-export default GitSearch; 
-=======
 
 export default GitSearch;
->>>>>>> mike

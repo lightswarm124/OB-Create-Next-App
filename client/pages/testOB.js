@@ -13,7 +13,8 @@ class OpenBounty extends React.Component {
 getOwner = async () => {
     const { accounts, OBContract, web3 } = this.props
     let response = await OBContract.projectOwner.call();
-	console.log(response);
+	let res = await OBContract;
+	console.log(accounts);
 	this.setState({ owner: response })
   }
 

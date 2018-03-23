@@ -6,7 +6,14 @@ module.exports = {
       network_id: '*', // Match any network id,
       gas: 6721975,
       gasLimit: 1000000000
-    }
+  },
+  	rinkeby: {
+  	  host: "localhost", // Connect to geth on the specified
+  	  port: 8545,
+	  from: "0x1ad2f8ea9d1f3cbcbde1ff6725aef90c36ad5b00",
+  	  network_id: 4,
+  	  gas: 4612388 // Gas limit used for deploys
+	}
   },
   solc: {
     // Turns on the Solidity optimizer. For development the optimizer's

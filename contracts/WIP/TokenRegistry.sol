@@ -1,5 +1,9 @@
 pragma solidity ^0.4.18;
 
+import "./ERC20Lib.sol";
+import "./OpenBountyLib.sol";
+import "./OpenBounty.sol";
+
 contract Ownable {
     address public owner;
 
@@ -55,19 +59,17 @@ contract TokenRegistry is Ownable {
 		_;
 	}
 
-	function addToken(address _token, bytes32 _dataVerHash) public
-		onlyOwner
-		notYetRegistered(_token)
+	function addToken(uint _initialSupply, bytes32 _dataVerHash) public
 		noNameRegistered(_dataVerHash)
-		notNullAddress(_token)
 	{
-		tokens[_token] = TokenDataStruct({
-			token: _token,
+		OpenBounty OB = new OpenBounty(_initialSupply);
+		tokens[OB] = TokenDataStruct({
+			token: OB,
 			dataVerHash: _dataVerHash
 		});
-		tokenAddressList.push(_token);
-		tokenDataHash[_dataVerHash] = _token;
-		TokenAdded(_token, _dataVerHash);
+		tokenAddressList.push(OB);
+		tokenDataHash[_dataVerHash] = OB;
+		TokenAdded(OB, _dataVerHash);
 	}
 
 	function removeToken(address _token, uint _index) public

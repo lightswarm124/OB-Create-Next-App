@@ -15,6 +15,12 @@ const Repo = ({...props}) => {
 			</Link><br />
 			<a>Owner_ID: {props.owner.id}</a><br />
 			<a>Created At: {props.created_at}</a><br /><br />
+			<style jsx>{`
+				.repo {
+					padding: 10px 10px 10px;
+					border: 1px solid #9B9B9B;
+				}
+			`}</style>
 		</div>
 	)
 }

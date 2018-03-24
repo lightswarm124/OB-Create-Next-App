@@ -5,7 +5,7 @@ import Link from 'next/link';
 const PRInfo = ({...props}) => {
 	let url = 'https://github.com/' + props.base.repo.owner.login + '/' + props.base.repo.name + '/pull/' + props.number;
 	return (
-		<div className="PullRequestInfo">
+		<div className="PR">
 			<a>PR Title: {props.title}</a><br />
 			<Link href={url}><a>PR ID: {props.id}</a></Link><br />
 			<Link href={`https://github.com/${props.user.login}`}>
@@ -15,6 +15,12 @@ const PRInfo = ({...props}) => {
 			<a>PR Number: {props.number}</a><br />
 			<a>Created At: {props.created_at}</a><br />
 			<a>Status: {props.state}</a><br /><br/>
+			<style jsx>{`
+				.PR {
+					padding: 10px 10px 10px;
+					border: 1px solid #9B9B9B;
+				}
+			`}</style>
 		</div>
 	)
 }

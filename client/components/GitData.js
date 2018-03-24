@@ -41,6 +41,7 @@ class GitData extends React.Component {
 		// https://api.github.com/search/commits?q=author:lightswarm124  + searchTerm (URL for project author search)
 		// https://api.github.com/search/repositories?sort=stars&order=desc&q= (default url)
 		console.log(search);
+		console.log(this.props);
 		fetch(endpoint)
 			.then(blob => blob.json())
 			.then(response => {

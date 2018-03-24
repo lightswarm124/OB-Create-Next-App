@@ -35,13 +35,13 @@ class GitSearch extends React.Component {
     }
 
     onRepoClick(event) {
-
         let search = this.GitSearch.value;
         let endpoint = 'https://api.github.com/search/repositories?q=' + search;
 
         // https://api.github.com/search/commits?q=author:lightswarm124  + searchTerm (URL for project author search)
         // https://api.github.com/search/repositories?sort=stars&order=desc&q= (default url)
         console.log(search);
+		console.log(this.props);
         fetch(endpoint)
             .then(blob => blob.json())
             .then(response => {
@@ -53,6 +53,7 @@ class GitSearch extends React.Component {
     }
 
 	render() {
+		let repoInfo = this.state.repositories;
 		return(
 			<div>
 				<form>
@@ -60,7 +61,12 @@ class GitSearch extends React.Component {
 					<button onClick={this.onRepoClick}>Repo Search</button>
 				</form>
 
-				{ this.state.repositories.map(repo => <Repo key={repo.id} {...repo} />)}
+				<b>{
+					this.state.repositories ?
+					this.state.repositories.map(repo => <Repo key={repo.id} {...repo} />)
+					: <div></div>
+				}</b>
+
 			</div>
 		);
 	}

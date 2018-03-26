@@ -1,17 +1,26 @@
 import Layout from '../components/Layout';
+import Web3Container from '../lib/Web3Container';
 import Link from 'next/link';
 
 const PRInfo = ({...props}) => {
 	let url = 'https://github.com/' + props.base.repo.owner.login + '/' + props.base.repo.name + '/pull/' + props.number;
 	return (
-		<div className="PullRequestInfo">
-			<h4>PR Title: {props.title}</h4>
-			<Link href={url}><a>PR_ID: {props.id}</a></Link>
-			<p>Owner UserName: {props.user.login}</p>
-			<p>Owner_ID: {props.user.id}</p>
-			<p>PR_Number: {props.number}</p>
-			<p>Created At: {props.created_at}</p>
-			<p>Status: {props.state}</p>
+		<div className="PR">
+			<a>PR Title: {props.title}</a><br />
+			<Link href={url}><a>PR ID: {props.id}</a></Link><br />
+			<Link href={`https://github.com/${props.user.login}`}>
+				<a>PR User: {props.user.login}</a>
+			</Link><br />
+			<a>PR User ID: {props.user.id}</a><br />
+			<a>PR Number: {props.number}</a><br />
+			<a>Created At: {props.created_at}</a><br />
+			<a>Status: {props.state}</a><br /><br/>
+			<style jsx>{`
+				.PR {
+					padding: 10px 10px 10px;
+					border: 1px solid #9B9B9B;
+				}
+			`}</style>
 		</div>
 	)
 }
@@ -20,17 +29,16 @@ class Repo extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			repoData: [],
-			loading: true,
+			repoData: []
 		}
 	}
 
 	async fetchPR() {
-		const res = await fetch(`https://api.github.com/repos/lightswarm124/OB-Create-Next-App/pulls`);
+		console.log(this.props)
+		const res = await fetch(`https://api.github.com/repos/${this.props.url.query.user}/${this.props.url.query.name}/pulls?state=all`);
 		const data = await res.json();
 		return this.setState({
 			repoData: data,
-			loading: false,
 		})
 	}
 
@@ -41,6 +49,7 @@ class Repo extends React.Component {
 	render() {
 		return(
 			<Layout>
+				<h2>{`${this.props.url.query.name} `}Pull Requests</h2>
 				{this.state.repoData.map(PR => <PRInfo key={PR.id} {...PR} />)}
 			</Layout>
 		);

@@ -2,36 +2,35 @@ import Link from 'next/link';
 import ActiveLink from './ActiveLink';
 
 const links = [
-	{ href: 'https://github.com/lightswarm124', label: 'Login w/ Github' }
+	{ href: 'https://github.com/lightswarm124', label: <img src="../static/GitHub-Mark-120px-plus.png" width="30px" title="Login with GitHub" /> }
 ].map(link => {	// remap link.href + link.label into link.key
 	link.key = `nav-link-${link.href}-${link.label}`
 	return link;
 });
 
 const Nav = () => (
-	<nav className="navbar navbar-expand navbar-dark bg-dark mb-4">
+	<nav className="navbar navbar-expand-lg navbar-light bg-light">
 		<div className="container">
-			<a className="navbar-brand" href="/">OpenBounty</a>
+			<a className="navbar-brand" href="/"><img src="../static/Logo_Black.png" title="Home" width="180px" /></a>
 			<div className="collapse navbar-collapse">
 				<ul className="navbar-nav ml-auto">
 				  	<li className="nav-item">
-						<ActiveLink className="nav-link" href="/">
-					  		Home
-						</ActiveLink>
-						<ActiveLink className="nav-link" href="/account">
-							Account
-						</ActiveLink>
+
+
+						<Link prefetch href="/account">
+							<a className="nav-link"><img src="../static/Account.png" width="30px" title="Account Management" /></a>
+						</Link>
+						<Link prefetch href="/repositories">
+							<a className="nav-link"><img src="../static/Repositories.png" width="30px" title="Repository Management" /></a>
+						</Link>
+						<Link prefetch href="/project">
+						  <a className="nav-link"><img src="../static/Project.png" width="30px" title="Project Management" /></a>
+						</Link>
+						<Link prefetch href="/testOB">
+							<a className="nav-link"><img src="../static/Settings.png" width="30px" title="OpenBounty Settings" /></a>
+						</Link>
 						<ActiveLink className="nav-link" href="/repos">
 							Repos
-						</ActiveLink>
-						<ActiveLink className="nav-link" href="/project">
-						  Project
-						</ActiveLink>
-						<ActiveLink className="nav-link" href="/dashboard">
-							Dashboard
-						</ActiveLink>
-						<ActiveLink prefetch className="nav-link" href="/testOB">
-							OBContract
 						</ActiveLink>
 				  	</li>
 				  	<ul>
@@ -41,6 +40,7 @@ const Nav = () => (
 						  			<ActiveLink href={href}>
 										{label}
 						  			</ActiveLink>
+
 								</li>
 					  		)
 						)}

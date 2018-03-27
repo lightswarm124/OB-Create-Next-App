@@ -2,7 +2,9 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-import Repos from '../components/Repos';
+import GitSearch from '../components/GitSearch';
+import GitData from '../components/GitData';
+
 
 class Dapp extends React.Component {
   state = {
@@ -57,12 +59,13 @@ class Dapp extends React.Component {
     const { web3, accounts } = this.props
     return (
 		<Layout title="Dapp" description="Decentralized Application">
+
 	      <div>
-            <h2>Repository Management</h2>
+            <h2><b>Repository Management</b></h2>
             <hr className="hr" />
-            <p>Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
+            <p>&nbsp;Here you will manage your GitHub Repositories and register your project with OpenBounty.</p>
             <div>
-            <h4>Owned GitHub Repositories</h4>
+            <h4>&nbsp;&nbsp;<b>Owned GitHub Repositories</b></h4>
             <hr className="hr" />
             <table class="table table-hover" width="100%">
               <thead>
@@ -87,7 +90,7 @@ class Dapp extends React.Component {
             </div>
             <p />
             <div>
-            <h4>Recent GitHub Activity</h4>
+            <h4>&nbsp;&nbsp;<b>Recent GitHub Activity</b></h4>
             <hr className="hr" />
             <table class="table table-hover" width="100%">
               <thead>
@@ -112,7 +115,10 @@ class Dapp extends React.Component {
             </div>
 	      </div>
         <div>
-          <Repos Repos={Repos}/>
+			<div>Search Repository Name</div>
+		  	<GitSearch />
+			<div>Search Username</div>
+          	<GitData />
         </div>
         <style jsx>{`
           .hero {
@@ -141,22 +147,26 @@ class Dapp extends React.Component {
             width: 220px;
             text-align: left;
             text-decoration: none;
-            color: #434343;
+            color: #9B9B9B;
             border: 1px solid #9B9B9B;
           }
           .card:hover {
-            border-color: #067df7;
+            border-color: #b58e12;
           }
           .card h3 {
             margin: 0;
-            color: #067df7;
+            color: #343a40;
             font-size: 18px;
+          }
+          .card h6 {
+            margin: 0;
+            color: #343a40;
           }
           .card p {
             margin: 0;
             padding: 12px 0 0;
             font-size: 13px;
-            color: #333;
+            color: #9B9B9B;
           }
           .hr{
             padding: 0px;

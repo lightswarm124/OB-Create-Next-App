@@ -6,13 +6,16 @@ export default class AddressList extends React.PureComponent {
 		this.setIndex = this.setIndex.bind(this);
 		this.state = {
 			activeAddress: props.addresses[0],
-			accountIndex: 0
+			accountIndex: 0,
+			ethBalance: 0
 		};
 	}
 
 	setAddress = async (accIndex) => {
-		const { addresses } = this.props;
-		this.setState({ activeAddress: addresses[accIndex] });
+		const { addresses, web3 } = this.props;
+		let ethBal = web3.eth.getBalance(addresses[accIndex]);
+
+		this.setState({ activeAddress: addresses[accIndex], ethBalance: ethBal });
 	}
 
 	setIndex(event) {
@@ -21,10 +24,7 @@ export default class AddressList extends React.PureComponent {
 	}
 
 	render() {
-		const { addresses } = this.props
-		console.log(addresses);
-		console.log(addresses.length);
-
+		const { addresses, web3 } = this.props
 		return(
 			<div className="addressList">
   			<center><QRCode value={this.state.activeAddress} /></center>
@@ -39,6 +39,7 @@ export default class AddressList extends React.PureComponent {
 						<option key={i} value={i}>{i}: {address}</option>
 					))}
 				</select>
+				<center>{this.state.ethBalance}</center>
 			</div>
 		);
 	};

@@ -15,10 +15,20 @@ const PRInfo = ({...props}) => {
 			<a>PR Number: {props.number}</a><br />
 			<a>Created At: {props.created_at}</a><br />
 			<a>Status: {props.state}</a><br /><br/>
+			<div className="buttons">
+				<button>Submit Bounty</button>
+				<button>Accept Bounty</button>
+				<button>Contract Address</button>
+				<button>Transfer Tokens</button>
+			</div>
 			<style jsx>{`
 				.PR {
 					padding: 10px 10px 10px;
 					border: 1px solid #9B9B9B;
+				}
+				. buttons {
+					top: 0px;
+					right: 0px;
 				}
 			`}</style>
 		</div>

@@ -2,7 +2,6 @@ import React from 'react'
 import Web3Container from '../lib/Web3Container'
 import Layout from '../components/Layout';
 import AddressList from '../components/AddressList';
-import RepositoryInfo from '../components/repositoryInfo';
 import GitSearch from '../components/GitSearch';
 import GitData from '../components/GitData';
 
@@ -116,8 +115,10 @@ class Dapp extends React.Component {
             </div>
 	      </div>
         <div>
-          <GitData />
-          <RepositoryInfo />
+			<div>Search Repository Name</div>
+		  	<GitSearch />
+			<div>Search Username</div>
+          	<GitData />
         </div>
         <style jsx>{`
           .hero {

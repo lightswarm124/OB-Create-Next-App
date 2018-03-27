@@ -25,7 +25,6 @@ class Dapp extends React.Component {
   getValue = async () => {
     const { accounts, contract, web3, OBContract } = this.props
 
-    let response = await contract.get.call({ from: accounts[0] });
 	let etherBal = await web3.eth.getBalance(accounts[0]);
   let checkBlock = await OBContract.checkBlockLock();
   //response = response.toNumber();
@@ -61,7 +60,7 @@ class Dapp extends React.Component {
             <a className="card" id="accountlists">
               <center><h3><b>Account List</b></h3></center>
               <hr className="hr" />
-              <AddressList addresses={accounts} />
+              <AddressList addresses={accounts} web3={web3} />
               <button className="btn btn-secondary" onClick={this.getValue.bind(this)}>Get Balances</button>
             </a>
             <a className="card" id="accountbalances">

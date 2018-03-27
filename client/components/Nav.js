@@ -26,14 +26,11 @@ const Nav = () => (
 						<Link prefetch href="/project">
 						  <a className="nav-link"><img src="../static/Project.png" width="30px" title="Project Management" /></a>
 						</Link>
-						<Link prefetch href="/settings">
+						<Link prefetch href="/testOB">
 							<a className="nav-link"><img src="../static/Settings.png" width="30px" title="OpenBounty Settings" /></a>
 						</Link>
 						<ActiveLink className="nav-link" href="/repos">
 							Repos
-						</ActiveLink>
-						<ActiveLink prefetch className="nav-link" href="/testOB">
-							Test Contract
 						</ActiveLink>
 				  	</li>
 				  	<ul>

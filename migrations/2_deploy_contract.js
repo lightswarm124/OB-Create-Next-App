@@ -14,3 +14,10 @@ module.exports = function (deployer) {
     deployer.link(OpenBountyLib, OpenBounty);
     deployer.deploy(OpenBounty, 100000000);
 }
+/*
+const TokenRegistry = artifacts.require('./WIP/TokenRegistry1.sol');
+
+module.exports = function (deployer) {
+	deployer.deploy(TokenRegistry);
+};
+*/

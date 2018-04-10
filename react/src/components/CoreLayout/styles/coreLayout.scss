@@ -1,0 +1,23 @@
+@import 'src/styles/typography.scss';
+@import 'src/styles/colors.scss';
+
+html {
+  height: 100%;
+}
+  
+body {
+  margin: 0;
+  font-family: $default-font;
+  height: 100%;
+}
+
+.core-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__body {
+    flex: 1;
+  }
+}

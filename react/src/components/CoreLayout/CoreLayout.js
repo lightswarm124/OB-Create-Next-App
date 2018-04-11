@@ -9,6 +9,9 @@ export default class CoreLayout extends Component {
     this.props.loadAccounts().catch((error) => {
       console.log('Error loading accounts: ' + error);
     });
+    this.props.loadRegisteredRepos().catch((error) => {
+      console.log('Error loading registered repositories: ' + error);
+    });
   }
 
   render () {
@@ -25,5 +28,6 @@ export default class CoreLayout extends Component {
 
 CoreLayout.propTypes = {
   children: PropTypes.element,
-  loadAccounts: PropTypes.func
+  loadAccounts: PropTypes.func,
+  loadRegisteredRepos: PropTypes.func
 };

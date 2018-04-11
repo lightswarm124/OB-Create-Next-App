@@ -6,8 +6,13 @@
   flex-direction: column;
 
   &__search {
+    width: 100%;
     display: flex;
     padding: 2rem 1rem;
+
+    &__input {
+      flex: 1;
+    }
 
     &__button {
       margin: 0 1rem;
@@ -40,7 +45,13 @@
         flex: 1;
         margin: 0 2rem;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        &__label {
+          color: $darkGrey;
+          margin: 0.25rem 0;
+        }
       }
     }
   }

@@ -15,15 +15,15 @@ export default class Header extends Component {
     return (
       <div className="header">
         <div className="header__logo">
-          <a href="" onClick={(e) => this.gotoPath(e, '/')}>
+          <a href="" onClick={(e) => this.gotoPath('/', e)}>
             <img src={LogoImg} alt="logo" />
           </a>
         </div>
         <div className="header__nav">
-          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('repositories', e)}>
+          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('/repositories', e)}>
             Repositories
           </a>
-          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('account', e)}>
+          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('/account', e)}>
             Account
           </a>
         </div>

@@ -4,7 +4,7 @@ import { getAccounts } from 'services/web3Api';
 
 const defaultAccounts = [];
 
-export default function account(state = defaultAccounts, action) {
+export default function accounts(state = defaultAccounts, action) {
   switch (action.type) {
     case SET_ACCOUNTS:
       return action.payload;

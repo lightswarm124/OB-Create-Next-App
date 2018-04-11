@@ -32,13 +32,23 @@ export default class Repositories extends Component {
     return this.state.repositories.map((repo) => {
       return (
         <div key={repo.id} className="repositories__results__repo">
-          <div className="repositories__results__repo__owner">
-            <img className="repositories__results__repo__owner__avatar" src={repo.owner.avatar_url} alt="Avatar" />
-          </div>
+          { repo.owner &&
+            <div className="repositories__results__repo__owner">
+              <img className="repositories__results__repo__owner__avatar" src={repo.owner.avatar_url} alt="Avatar" />
+            </div>
+          }
           <div className="repositories__results__repo__body">
-            <a href="" onClick={(e) => this.gotoPath('repository/' + repo.id, e)}>
-              {repo.full_name}
-            </a>
+            <div className="repositories__results__repo__body__label">
+              <a href="" onClick={(e) => this.gotoPath('/repository/' + repo.id, e)}>
+                {repo.full_name}
+              </a>
+            </div>
+            <div className="repositories__results__repo__body__label">
+              Watchers: { repo.watchers_count }
+            </div>
+            <div className="repositories__results__repo__body__label">
+              Forks: { repo.forks_count }
+            </div>
           </div>
         </div>
       );
@@ -50,7 +60,7 @@ export default class Repositories extends Component {
       <div className="repositories">
         <div className="container">
           <form className="repositories__search" onSubmit={(e) => this.searchRepositories(e)}>
-            <input className="input" placeholder="Search Repositories"
+            <input className="repositories__search__input input" placeholder="Search Repositories"
               value={this.state.searchTerm} onChange={(e) => this.setState({ searchTerm: e.target.value })} />
             <div className="repositories__search__button">
               <input type="submit" className="button" value="Search" />

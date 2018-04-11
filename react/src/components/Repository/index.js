@@ -1,3 +1,3 @@
-import Repository from './Repository';
+import RepositoryContainer from './RepositoryContainer';
 
-export default Repository;
+export default RepositoryContainer;

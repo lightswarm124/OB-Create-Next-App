@@ -37,7 +37,7 @@ export function ethToken(account, ethAmount) {
       });
       return account;
     });
-  }
+  };
 }
 
 export function tokenEth(account, tokenAmount) {
@@ -49,7 +49,7 @@ export function tokenEth(account, tokenAmount) {
       });
       return account;
     });
-  }
+  };
 }
 
 export function awardBounty(account, recipientId, tokenAmount) {
@@ -61,7 +61,7 @@ export function awardBounty(account, recipientId, tokenAmount) {
       });
       return account;
     });
-  }
+  };
 }
 
 export function clearAccount() {

@@ -20,7 +20,7 @@ export default class Account extends Component {
     this.props.loadAccount(selectedAccount).catch((err) => {
       console.log('Error loading account: ' + err);
     });
-  } 
+  }
 
   changeAccount(selectedAccount) {
     this.loadAccount(selectedAccount);
@@ -82,10 +82,10 @@ export default class Account extends Component {
                 <div className="account__body__content__form">
                   <label>Exchange Ether for OpenBounty Tokens</label>
                   <div className="account__body__content__form__input-group">
-                    <input className="input" type="number" 
-                      value={this.state.ethWithdrawalAmount} onChange={(e) => this.setState({ ethWithdrawalAmount: e.target.value})} />
-                    <input type="submit" className="button account__body__content__form__input-group__button" 
-                      value="Withdraw Ether"/>
+                    <input className="input" type="number"
+                      value={this.state.ethWithdrawalAmount} onChange={(e) => this.setState({ ethWithdrawalAmount: e.target.value })} />
+                    <input type="submit" className="button account__body__content__form__input-group__button"
+                      value="Withdraw Ether" />
                   </div>
                 </div>
               </form>
@@ -93,10 +93,10 @@ export default class Account extends Component {
                 <div className="account__body__content__form">
                   <label>Exchange OpenBounty Tokens for Ether</label>
                   <div className="account__body__content__form__input-group">
-                    <input className="input" type="number" 
-                      value={this.state.tokenWithdrawalAmount} onChange={(e) => this.setState({ tokenWithdrawalAmount: e.target.value})} />
-                    <input type="submit" className="button account__body__content__form__input-group__button" 
-                      value="Withdraw Token"/>
+                    <input className="input" type="number"
+                      value={this.state.tokenWithdrawalAmount} onChange={(e) => this.setState({ tokenWithdrawalAmount: e.target.value })} />
+                    <input type="submit" className="button account__body__content__form__input-group__button"
+                      value="Withdraw Token" />
                   </div>
                 </div>
               </form>

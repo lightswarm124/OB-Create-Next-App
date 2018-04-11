@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 import { getRepository, getPullRequestsForRepository } from 'services/githubApi';
 import './styles/repository.scss';
 
@@ -7,7 +8,7 @@ export default class Repository extends Component {
 
   constructor() {
     super();
-    this.state = { repo: {}, prs: [] };
+    this.state = { repo: {}, prs: [], isLoading: false };
   }
 
   isRepoRegistered(repoId) {
@@ -27,19 +28,25 @@ export default class Repository extends Component {
       });
 
       if (this.isRepoRegistered(repoId)) {
+        this.setState({ isLoading: true });
         getPullRequestsForRepository(repoId, 'open').then((response) => {
-          this.setState({ prs: response.data });
+          this.setState({ prs: response.data, isLoading: false });
+        }).catch((err) => {
+          this.setState({ isLoading: false });
+          console.log('Error getting pull requests for repository: ' + err);
         });
       }
     }
   }
 
   registerRepo() {
+    this.setState({ isLoading: true });
     this.props.registerRepo(this.state.repo, this.props.account.accountId).then((response) => {
       return getPullRequestsForRepository(this.state.repo.id, 'open');
     }).then((response) => {
-      this.setState({ prs: response.data });
+      this.setState({ prs: response.data, isLoading: false });
     }).catch((error) => {
+      this.setState({ isLoading: false });
       console.log('Error registering repository: ' + error);
     });
   }
@@ -48,7 +55,7 @@ export default class Repository extends Component {
     this.props.unregisterRepo(this.state.repo, this.props.account.accountId).then(() => {
       this.setState({ prs: [] });
     }).catch((err) => {
-      console.log('Error unregistering repository: ' + error);
+      console.log('Error unregistering repository: ' + err);
     });
   }
 
@@ -57,7 +64,7 @@ export default class Repository extends Component {
     this.props.awardBounty(this.props.account, pr.user.login, tokenAmount).then(() => {
       const prs = this.state.prs;
       const i = prs.indexOf(pr);
-      this.setState({ prs: [...prs.slice(0, i), {...pr, bountyAwarded: true}, ...prs.slice(i+1, pr.length)] });
+      this.setState({ prs: [...prs.slice(0, i), { ...pr, bountyAwarded: true }, ...prs.slice(i + 1, pr.length)] });
     }).catch((error) => {
       console.log('Error awarding bounty: ' + error);
     });
@@ -77,11 +84,11 @@ export default class Repository extends Component {
               <div>{ pr.title }</div>
             </div>
             <div className="repository__body__prs__pr__body__award">
-              { pr.bountyAwarded ?
-                <div className="repository__body__prs__pr__body__award__awarded">
+              { pr.bountyAwarded
+                ? <div className="repository__body__prs__pr__body__award__awarded">
                   Bounty Awarded
-                </div>:
-                <button className="button" onClick={() => this.awardBounty(pr, 500)}>
+                </div>
+                : <button className="button" onClick={() => this.awardBounty(pr, 500)}>
                   Award Bounty: 500 tokens
                 </button>
               }
@@ -132,6 +139,7 @@ export default class Repository extends Component {
                 </button>
               }
             </div>
+            { this.state.isLoading && <LoadingSpinner /> }
             { this.state.prs && this.state.prs.length > 0 &&
               <div className="repository__body__prs">
                 { this.renderPrs() }

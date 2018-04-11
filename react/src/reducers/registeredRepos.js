@@ -12,7 +12,7 @@ export default function registeredRepos(state = defaultRepos, action) {
       return [...state, action.payload];
     case REMOVE_REPO:
       const i = state.indexOf(action.payload.id);
-      return [...state.slice(0, i), ...state.slice(i+1, state.length)];
+      return [...state.slice(0, i), ...state.slice(i + 1, state.length)];
     case RESET_REPOS:
       return defaultRepos;
     default:

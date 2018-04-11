@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { browserHistory } from 'react-router';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 import './styles/repositories.scss';
 import { searchRepositories } from 'services/githubApi';
 
@@ -8,15 +9,16 @@ export default class Repositories extends Component {
 
   constructor() {
     super();
-    this.state = { searchTerm: '', repositories: [] };
+    this.state = { searchTerm: '', repositories: [], isLoading: false };
   }
 
   searchRepositories(e) {
     e.preventDefault();
+    this.setState({ isLoading: true });
     searchRepositories(this.state.searchTerm).then((response) => {
-      console.log(response.data.items);
-      this.setState({ repositories: response.data.items });
+      this.setState({ repositories: response.data.items, isLoading: false });
     }).catch((error) => {
+      this.setState({ isLoading: false });
       console.log('Error searching for repositories: ' + error);
     });
   }
@@ -69,7 +71,7 @@ export default class Repositories extends Component {
         </div>
         <div className="repositories__results">
           <div className="container">
-            { this.renderRepositories() }
+            { this.state.isLoading ? <LoadingSpinner /> : this.renderRepositories() }
           </div>
         </div>
       </div>

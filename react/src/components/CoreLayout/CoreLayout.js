@@ -19,7 +19,7 @@ export default class CoreLayout extends Component {
   render () {
     return (
       <div className="core-container">
-        <Header account={this.props.account}/>
+        <Header account={this.props.account} />
         <div className="core-container__body">
           {this.props.children}
         </div>

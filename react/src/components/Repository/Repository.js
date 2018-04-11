@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getRepository, getPullRequestsForRepository } from 'services/githubApi';
-import { awardBounty } from 'services/openBountyApi';
 import './styles/repository.scss';
 
 export default class Repository extends Component {
@@ -36,7 +35,7 @@ export default class Repository extends Component {
   }
 
   registerRepo() {
-    this.props.registerRepo(this.state.repo, 'accountId').then((response) => {
+    this.props.registerRepo(this.state.repo, this.props.account.accountId).then((response) => {
       return getPullRequestsForRepository(this.state.repo.id, 'open');
     }).then((response) => {
       this.setState({ prs: response.data });
@@ -46,11 +45,20 @@ export default class Repository extends Component {
   }
 
   unregisterRepo() {
-
+    this.props.unregisterRepo(this.state.repo, this.props.account.accountId).then(() => {
+      this.setState({ prs: [] });
+    }).catch((err) => {
+      console.log('Error unregistering repository: ' + error);
+    });
   }
 
-  awardBounty(id) {
-    awardBounty(id, 'accountId').catch((error) => {
+  awardBounty(pr, tokenAmount) {
+    // TODO: pr.user.login should be replaced with the pr user's corresponding wallet ID
+    this.props.awardBounty(this.props.account, pr.user.login, tokenAmount).then(() => {
+      const prs = this.state.prs;
+      const i = prs.indexOf(pr);
+      this.setState({ prs: [...prs.slice(0, i), {...pr, bountyAwarded: true}, ...prs.slice(i+1, pr.length)] });
+    }).catch((error) => {
       console.log('Error awarding bounty: ' + error);
     });
   }
@@ -69,9 +77,14 @@ export default class Repository extends Component {
               <div>{ pr.title }</div>
             </div>
             <div className="repository__body__prs__pr__body__award">
-              <button className="button" onClick={() => this.awardBounty(pr.id)}>
-                Award Bounty
-              </button>
+              { pr.bountyAwarded ?
+                <div className="repository__body__prs__pr__body__award__awarded">
+                  Bounty Awarded
+                </div>:
+                <button className="button" onClick={() => this.awardBounty(pr, 500)}>
+                  Award Bounty: 500 tokens
+                </button>
+              }
             </div>
           </div>
         </div>
@@ -133,6 +146,9 @@ export default class Repository extends Component {
 
 Repository.propTypes = {
   params: PropTypes.object,
+  account: PropTypes.object,
   registerRepo: PropTypes.func,
+  unregisterRepo: PropTypes.func,
+  awardBounty: PropTypes.func,
   registeredRepos: PropTypes.array
 };

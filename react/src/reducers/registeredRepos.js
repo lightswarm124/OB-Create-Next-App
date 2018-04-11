@@ -11,7 +11,8 @@ export default function registeredRepos(state = defaultRepos, action) {
     case ADD_REPO:
       return [...state, action.payload];
     case REMOVE_REPO:
-      return state;
+      const i = state.indexOf(action.payload.id);
+      return [...state.slice(0, i), ...state.slice(i+1, state.length)];
     case RESET_REPOS:
       return defaultRepos;
     default:

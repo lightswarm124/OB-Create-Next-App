@@ -8,25 +8,22 @@ export default class Account extends Component {
   constructor() {
     super();
     this.state = {
-      balance: 0,
-      ethBalance: 0,
-      projectowner: 0,
-      ownerTokenBalance:0,
-      tokenBalance: 0,
-      totalSupply: 0,
-      ethaddress: 0x0,
-      selectedAccount: 0
+      selectedAccount: 0,
+      ethWithdrawalAmount: 0,
+      tokenWithdrawalAmount: 0
     };
   }
 
-  componentDidMount() {
-    if (this.props.accounts) {
-      this.setState({ selectedAccount: this.props.accounts[0] });
-    }
-  }
+  loadAccount(selectedAccount) {
+    // retreive details of the selected account
+    this.setState({ selectedAccount });
+    this.props.loadAccount(selectedAccount).catch((err) => {
+      console.log('Error loading account: ' + err);
+    });
+  } 
 
   changeAccount(selectedAccount) {
-    this.setState({ selectedAccount });
+    this.loadAccount(selectedAccount);
   }
 
   renderAccountOptions() {
@@ -39,32 +36,70 @@ export default class Account extends Component {
     });
   }
 
+  ethToToken(e) {
+    e.preventDefault();
+    this.props.ethToken(this.props.account, this.state.ethWithdrawalAmount).then(() => {
+      this.setState({ ethWithdrawalAmount: 0 });
+    }).catch((err) => {
+      console.log('Error transferring ether to token: ' + err);
+    });
+  }
+
+  tokenToEth(e) {
+    e.preventDefault();
+    this.props.tokenEth(this.props.account, this.state.tokenWithdrawalAmount).then(() => {
+      this.setState({ tokenWithdrawalAmount: 0 });
+    }).catch((err) => {
+      console.log('Error transferring token to ether: ' + err);
+    });
+  }
+
   render () {
     return (
       <div className="container">
         <div className="account">
-          <div className="account__card">
-            <div className="account__card__header">
-              <div className="account__card__header__title">My Account</div>
-              <div className="account__card__header__selector">
-                <select className="select"
-                  value={this.state.selectedAccount} onChange={(e) => this.changeAccount(e.target.value)}>
-                  {this.renderAccountOptions()}
-                </select>
+          <div className="account__header">
+            <div className="account__header__title">My Account</div>
+            <div className="account__header__selector">
+              <select className="select"
+                value={this.state.selectedAccount} onChange={(e) => this.changeAccount(e.target.value)}>
+                {this.renderAccountOptions()}
+              </select>
+            </div>
+          </div>
+          <div className="account__body">
+            <div className="account__body__sidebar">
+              <div className="account__body__sidebar__title">Balances</div>
+              <div>
+                <div className="account__body__sidebar__label">ETH Balance</div>
+                <div className="account__body__sidebar__value">{this.props.account.ethBalance}</div>
+                <div className="account__body__sidebar__label">OpenBounty Token Balance</div>
+                <div className="account__body__sidebar__value">{this.props.account.ownerTokenBalance}</div>
               </div>
             </div>
-            <div className="account__card__body">
-              <div className="account__card__body__group">
-                <div className="account__card__body__group__title">Balances</div>
-                <div>
-                  <div className="account__card__body__group__label">Contract Balance</div>
-                  <div className="account__card__body__group__value">{this.state.balance}</div>
-                  <div className="account__card__body__group__label">ETH Balance</div>
-                  <div className="account__card__body__group__value">{this.state.ethBalance}</div>
-                  <div className="account__card__body__group__label">Token Balance</div>
-                  <div className="account__card__body__group__value">{this.state.ownerTokenBalance}</div>
+            <div className="account__body__content">
+              <form onSubmit={(e) => this.ethToToken(e)}>
+                <div className="account__body__content__form">
+                  <label>Exchange Ether for OpenBounty Tokens</label>
+                  <div className="account__body__content__form__input-group">
+                    <input className="input" type="number" 
+                      value={this.state.ethWithdrawalAmount} onChange={(e) => this.setState({ ethWithdrawalAmount: e.target.value})} />
+                    <input type="submit" className="button account__body__content__form__input-group__button" 
+                      value="Withdraw Ether"/>
+                  </div>
                 </div>
-              </div>
+              </form>
+              <form onSubmit={(e) => this.tokenToEth(e)}>
+                <div className="account__body__content__form">
+                  <label>Exchange OpenBounty Tokens for Ether</label>
+                  <div className="account__body__content__form__input-group">
+                    <input className="input" type="number" 
+                      value={this.state.tokenWithdrawalAmount} onChange={(e) => this.setState({ tokenWithdrawalAmount: e.target.value})} />
+                    <input type="submit" className="button account__body__content__form__input-group__button" 
+                      value="Withdraw Token"/>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -74,5 +109,9 @@ export default class Account extends Component {
 }
 
 Account.propTypes = {
-  accounts: PropTypes.array
+  accounts: PropTypes.array,
+  account: PropTypes.object,
+  loadAccount: PropTypes.func,
+  ethToken: PropTypes.func,
+  tokenEth: PropTypes.func
 };

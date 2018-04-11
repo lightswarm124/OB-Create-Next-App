@@ -12,6 +12,8 @@ export const createRoutes = (store) => (
     getComponent (nextState, cb) {
       const accountsReducer = require('reducers/accounts').default;
       injectReducer(store, { key: 'accounts', reducer: accountsReducer });
+      const accountReducer = require('reducers/account').default;
+      injectReducer(store, { key: 'account', reducer: accountReducer });
       const registeredReposReducer = require('reducers/registeredRepos').default;
       injectReducer(store, { key: 'registeredRepos', reducer: registeredReposReducer });
       const CoreLayout = require('../components/CoreLayout').default;

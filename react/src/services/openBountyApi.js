@@ -10,6 +10,3 @@ export function getRegisteredRepositories(accountId) {
   return Promise.resolve([]);
 }
 
-export function awardBounty(prId, accountId) {
-  return Promise.resolve(prId);
-}

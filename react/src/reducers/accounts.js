@@ -4,6 +4,7 @@ import { getAccounts } from 'services/web3Api';
 
 const defaultAccounts = [];
 
+// Reducers for available accounts from the web3 provider
 export default function accounts(state = defaultAccounts, action) {
   switch (action.type) {
     case SET_ACCOUNTS:

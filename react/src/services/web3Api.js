@@ -21,6 +21,47 @@ export function getAccounts() {
   });
 }
 
+export function getAccount(accountId) {
+  return Promise.resolve({
+    accountId,
+    balance: 0,
+    ethBalance: 10,
+    projectowner: 0,
+    ownerTokenBalance: 10000,
+    tokenBalance: 0,
+    totalSupply: 0,
+    ethaddress: 0x0
+  });
+}
+
+const ethToTokenExchangeRate = 5000;
+
+export function ethToToken(account, ethAmount) {
+  // this function could take accountId instead, but need full account for mocking
+  return Promise.resolve({
+    ...account,
+    ethBalance: account.ethBalance - ethAmount,
+    ownerTokenBalance: account.ownerTokenBalance + (ethAmount * ethToTokenExchangeRate)
+  });
+}
+
+export function tokenToEth(account, tokenAmount) {
+  // this function could take accountId instead, but need full account for mocking
+  return Promise.resolve({
+    ...account,
+    ownerTokenBalance: account.ownerTokenBalance - tokenAmount,
+    ethBalance: account.ethBalance + (tokenAmount / ethToTokenExchangeRate)
+  });
+}
+
+export function awardBountyToRecipient(account, recipientId, tokenAmount) {
+  // this function could take accountId instead, but need full account for mocking
+  return Promise.resolve({
+    ...account,
+    ownerTokenBalance: account.ownerTokenBalance - tokenAmount
+  });
+}
+
 export function getContract(contractDefinition) {
   initWeb3();
   const contract = initContract(contractDefinition);

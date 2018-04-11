@@ -18,8 +18,22 @@
   }
 
   &__nav {
+    display: flex;
+
+    &__badge {
+      padding: 0.5rem 1rem;
+      background-color: $primary;
+      color: $white;
+      border-radius: 1rem;
+      margin-right: 2rem;
+    }
+
     &__item {
-      margin: 0 1rem;
+      margin-right: 2rem;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $darkGrey;
     }
   }
 }

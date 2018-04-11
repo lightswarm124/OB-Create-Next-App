@@ -20,6 +20,9 @@ export default class Header extends Component {
           </a>
         </div>
         <div className="header__nav">
+          <div className="header__nav__badge">
+            { this.props.account.ownerTokenBalance } Tokens
+          </div>
           <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('/repositories', e)}>
             Repositories
           </a>
@@ -33,4 +36,5 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
+  account: PropTypes.object
 };

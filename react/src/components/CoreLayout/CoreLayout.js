@@ -6,7 +6,9 @@ import './styles/coreLayout.scss';
 export default class CoreLayout extends Component {
 
   componentDidMount() {
-    this.props.loadAccounts().catch((error) => {
+    this.props.loadAccounts().then((accounts) => {
+      return this.props.loadAccount(accounts[0]);
+    }).catch((error) => {
       console.log('Error loading accounts: ' + error);
     });
     this.props.loadRegisteredRepos().catch((error) => {
@@ -17,7 +19,7 @@ export default class CoreLayout extends Component {
   render () {
     return (
       <div className="core-container">
-        <Header />
+        <Header account={this.props.account}/>
         <div className="core-container__body">
           {this.props.children}
         </div>
@@ -28,6 +30,8 @@ export default class CoreLayout extends Component {
 
 CoreLayout.propTypes = {
   children: PropTypes.element,
+  account: PropTypes.object,
   loadAccounts: PropTypes.func,
+  loadAccount: PropTypes.func,
   loadRegisteredRepos: PropTypes.func
 };

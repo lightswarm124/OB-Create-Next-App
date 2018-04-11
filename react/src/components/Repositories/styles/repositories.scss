@@ -1,0 +1,47 @@
+@import 'src/styles/colors.scss';
+
+.repositories {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__search {
+    display: flex;
+    padding: 2rem 1rem;
+
+    &__button {
+      margin: 0 1rem;
+    }
+  }
+
+  &__results {
+    flex: 1;
+    overflow-y: auto;
+
+    &__repo {
+      display: flex;
+      margin: 1rem;
+      background-color: $white;
+      box-shadow: $shadow;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+
+      &__owner {
+        &__avatar {
+          height: 5rem;
+          width: 5rem;
+        }
+        &__name {
+
+        }
+      }
+
+      &__body {
+        flex: 1;
+        margin: 0 2rem;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

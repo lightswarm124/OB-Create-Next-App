@@ -83,7 +83,9 @@ config.globals = {
   '__PROD__'               : config.env === 'production',
   '__TEST__'               : config.env === 'test',
   '__COVERAGE__'           : !argv.watch && config.env === 'test',
-  '__BASENAME__'           : JSON.stringify(process.env.BASENAME || '')
+  '__BASENAME__'           : JSON.stringify(process.env.BASENAME || ''),
+  '__WEB3_PROVIDER_URL__'  : JSON.stringify(config.env === 'production' ? '' : 'http://localhost:9545'),
+  '__GITHUB_API_URL__'     : JSON.stringify(config.env === 'production' ? 'https://api.github.com' : 'https://api.github.com')
 };
 
 // ------------------------------------

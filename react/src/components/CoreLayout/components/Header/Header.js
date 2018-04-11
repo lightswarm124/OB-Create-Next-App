@@ -6,7 +6,7 @@ import './styles/header.scss';
 
 export default class Header extends Component {
 
-  gotoPath(e, path) {
+  gotoPath(path, e) {
     e.preventDefault();
     browserHistory.push(path);
   }
@@ -16,14 +16,14 @@ export default class Header extends Component {
       <div className="header">
         <div className="header__logo">
           <a href="" onClick={(e) => this.gotoPath(e, '/')}>
-            <img src={LogoImg} alt="logo"/>
+            <img src={LogoImg} alt="logo" />
           </a>
         </div>
         <div className="header__nav">
-          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath(e, 'repositories')}>
+          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('repositories', e)}>
             Repositories
           </a>
-          <a className="header__nav__item"  href="" onClick={(e) => this.gotoPath(e, 'account')}>
+          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('account', e)}>
             Account
           </a>
         </div>

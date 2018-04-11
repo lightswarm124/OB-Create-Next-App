@@ -5,6 +5,12 @@ import './styles/coreLayout.scss';
 
 export default class CoreLayout extends Component {
 
+  componentDidMount() {
+    this.props.loadAccounts().catch((error) => {
+      console.log('Error loading accounts: ' + error);
+    });
+  }
+
   render () {
     return (
       <div className="core-container">
@@ -18,5 +24,6 @@ export default class CoreLayout extends Component {
 }
 
 CoreLayout.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
+  loadAccounts: PropTypes.func
 };

@@ -11,8 +11,8 @@ export default class Home extends Component {
       <div className="home">
         <div className="home__hero">
           <div className="home__hero__image-container">
-            <img src={HeroImg} alt="OpenBounty"/>
-            <img src={HeroTextImg} alt="Welcome to OpenBounty"/>
+            <img src={HeroImg} alt="OpenBounty" />
+            <img src={HeroTextImg} alt="Welcome to OpenBounty" />
           </div>
           <div className="home__hero__caption">
             A decentralized network that connects people-to-projects and projects-to-people

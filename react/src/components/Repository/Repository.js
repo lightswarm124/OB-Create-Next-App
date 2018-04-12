@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LoadingSpinner from 'components/common/LoadingSpinner';
-import { getRepository, getPullRequestsForRepository } from 'services/githubApi';
+import { getRepository } from 'services/githubApi';
+import Bounties from './components/Bounties';
+import PullRequests from './components/PullRequests';
 import './styles/repository.scss';
 
 export default class Repository extends Component {
 
   constructor() {
     super();
-    this.state = { repo: {}, prs: [], isLoading: false };
+    this.state = { repo: {}, selectedTab: 'bounties' };
   }
 
   isRepoRegistered(repoId) {
@@ -26,27 +27,11 @@ export default class Repository extends Component {
       }).catch((error) => {
         console.log('Error getting repository details: ' + error);
       });
-
-      if (this.isRepoRegistered(repoId)) {
-        this.setState({ isLoading: true });
-        getPullRequestsForRepository(repoId, 'open').then((response) => {
-          this.setState({ prs: response.data, isLoading: false });
-        }).catch((err) => {
-          this.setState({ isLoading: false });
-          console.log('Error getting pull requests for repository: ' + err);
-        });
-      }
     }
   }
 
   registerRepo() {
-    this.setState({ isLoading: true });
-    this.props.registerRepo(this.state.repo, this.props.account.accountId).then((response) => {
-      return getPullRequestsForRepository(this.state.repo.id, 'open');
-    }).then((response) => {
-      this.setState({ prs: response.data, isLoading: false });
-    }).catch((error) => {
-      this.setState({ isLoading: false });
+    this.props.registerRepo(this.state.repo, this.props.account.accountId).catch((error) => {
       console.log('Error registering repository: ' + error);
     });
   }
@@ -59,48 +44,14 @@ export default class Repository extends Component {
     });
   }
 
-  awardBounty(pr, tokenAmount) {
-    // TODO: pr.user.login should be replaced with the pr user's corresponding wallet ID
-    this.props.awardBounty(this.props.account, pr.user.login, tokenAmount).then(() => {
-      const prs = this.state.prs;
-      const i = prs.indexOf(pr);
-      this.setState({ prs: [...prs.slice(0, i), { ...pr, bountyAwarded: true }, ...prs.slice(i + 1, pr.length)] });
-    }).catch((error) => {
-      console.log('Error awarding bounty: ' + error);
-    });
-  }
-
-  renderPrs() {
-    return this.state.prs.map((pr) => {
-      return (
-        <div key={pr.id} className="repository__body__prs__pr">
-          <div className="repository__body__prs__pr__user">
-            <img className="repository__body__prs__pr__user__avatar"
-              src={pr.user.avatar_url} alt="User avatar" />
-          </div>
-          <div className="repository__body__prs__pr__body">
-            <div className="repository__body__prs__pr__body__text">
-              <div>{ pr.user.login }</div>
-              <div>{ pr.title }</div>
-            </div>
-            <div className="repository__body__prs__pr__body__award">
-              { pr.bountyAwarded
-                ? <div className="repository__body__prs__pr__body__award__awarded">
-                  Bounty Awarded
-                </div>
-                : <button className="button" onClick={() => this.awardBounty(pr, 500)}>
-                  Award Bounty: 500 tokens
-                </button>
-              }
-            </div>
-          </div>
-        </div>
-      );
-    });
+  setTab(e, selectedTab) {
+    e.preventDefault();
+    this.setState({ selectedTab });
   }
 
   render() {
     const repo = this.state.repo;
+    const isRepoRegistered = this.isRepoRegistered(repo.id);
 
     return (
       <div className="container">
@@ -130,7 +81,7 @@ export default class Repository extends Component {
               </div>
             </div>
             <div className="repository__body__register">
-              { this.isRepoRegistered(repo.id)
+              { isRepoRegistered
                 ? <button className="button-danger" onClick={() => this.unregisterRepo()}>
                   Unregister Repository
                 </button>
@@ -139,10 +90,28 @@ export default class Repository extends Component {
                 </button>
               }
             </div>
-            { this.state.isLoading && <LoadingSpinner /> }
-            { this.state.prs && this.state.prs.length > 0 &&
-              <div className="repository__body__prs">
-                { this.renderPrs() }
+            { isRepoRegistered &&
+              <div className="repository__body__tabs">
+                <div className="repository__body__tabs__header">
+                  <div className={this.state.selectedTab === 'bounties'
+                    ? 'repository__body__tabs__header__tab repository__body__tabs__header__tab--active'
+                    : 'repository__body__tabs__header__tab'}>
+                    <a href="" onClick={(e) => this.setTab(e, 'bounties')}>Bounties</a>
+                  </div>
+                  <div className={this.state.selectedTab === 'prs'
+                    ? 'repository__body__tabs__header__tab repository__body__tabs__header__tab--active'
+                    : 'repository__body__tabs__header__tab'}>
+                    <a href="" onClick={(e) => this.setTab(e, 'prs')}>Pull Requests</a>
+                  </div>
+                </div>
+                <div className="repository__body__tabs__body">
+                  { this.state.selectedTab === 'bounties' &&
+                    <Bounties repo={repo} account={this.props.account} />
+                  }
+                  { this.state.selectedTab === 'prs' &&
+                    <PullRequests repo={repo} account={this.props.account} awardBounty={this.props.awardBounty} />
+                  }
+                </div>
               </div>
             }
           </div>

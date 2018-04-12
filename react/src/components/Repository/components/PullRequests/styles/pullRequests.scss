@@ -1,0 +1,57 @@
+@import 'src/styles/colors.scss';
+
+.pull-requests {
+  padding: 1rem 0;
+
+  &__pr {
+    margin: 1rem 0;
+    display: flex;
+
+    &__user {
+      &__avatar {
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+    
+    &__body {
+      flex: 1;
+      display: flex;
+      padding: 0.5rem 1rem;
+
+      &__text {
+        flex: 1;
+
+        &__title {
+          word-break: break-all;
+        }
+      }
+
+      &__award {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        &__awarded {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 40em) {
+
+  .pull-requests {
+    &__pr {
+      &__body {
+        padding: 0rem 1rem;
+        flex-direction: column;
+
+        &__text {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}

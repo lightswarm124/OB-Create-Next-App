@@ -13,3 +13,17 @@ export function getRegisteredRepositories(accountId) {
   return Promise.resolve([]);
 }
 
+export function getBounties(repo, status) {
+  // TODO: ADD GET requst to get all bounties for the repo with status, status could be Open, Close etc
+  return Promise.resolve([]);
+}
+
+export function addBounty(repo, bounty) {
+  // TODO: ADD POST request to add a bounty to the repo
+  return Promise.resolve(bounty);
+}
+
+export function removeBounty(repo, bounty) {
+  // TODO: ADD DELETE request to remove bounty from the repo
+  return Promise.resolve(bounty);
+}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { getBounties, addBounty, removeBounty } from 'services/openBountyApi.js';
 import './styles/bounties.scss';
 
 export default class Bounties extends Component {
@@ -8,22 +7,10 @@ export default class Bounties extends Component {
   constructor() {
     super();
     this.state = {
-      bounties: [],
       newBountyTitle: '',
       newBountyValue: 500,
-      newBountyDescription: '',
-      isLoading: false
+      newBountyDescription: ''
     };
-  }
-
-  componentDidMount() {
-    this.setState({ isLoading: true });
-    getBounties().then((bounties) => {
-      this.setState({ bounties, isLoading: false });
-    }).catch((err) => {
-      this.setState({ isLoading: false });
-      console.log('Error getting bounties: ' + err);
-    });
   }
 
   addBounty(e) {
@@ -33,29 +20,16 @@ export default class Bounties extends Component {
       value: this.state.newBountyValue,
       description: this.state.newBountyDescription
     };
-    this.setState({ isLoading: true });
-    addBounty(this.props.repo, newBounty).then((bounty) => {
-      this.setState({
-        bounties: [...this.state.bounties, { ...bounty }],
-        newBountyTitle: '',
-        newBountyValue: 500,
-        newBountyDescription: '',
-        isLoading: false
-      });
-    }).catch((err) => {
-      this.setState({ isLoading: false });
-      console.log('Error adding bounty: ' + err);
-    });
+    this.props.onAddBounty(newBounty);
+    this.setState({ newBountyTitle: '', newBountyValue: 500, newBountyDescription: '' });
   }
 
   removeBounty(bounty) {
-    const bounties = this.state.bounties;
-    const i = bounties.indexOf(bounty);
-    this.setState({ bounties: [...bounties.slice(0, i), ...bounties.slice(i + 1, bounties.length)] });
+    this.props.onRemoveBounty(bounty);
   }
 
   renderBounties() {
-    return this.state.bounties.map((bounty, i) => {
+    return this.props.bounties.map((bounty, i) => {
       return (
         <div key={'bounty' + i} className="bounties__bounty">
           <div className="bounties__bounty__header">
@@ -90,7 +64,7 @@ export default class Bounties extends Component {
             </div>
             <div className="bounties__new-bounty__form__body">
               <textarea className="input bounties__new-bounty__form__body__description"
-                value={this.state.newBountyDescription} placeholder="Bounty Description" rows="3"
+                value={this.state.newBountyDescription} placeholder="Bounty Description" rows="5"
                 required onChange={(e) => this.setState({ newBountyDescription: e.target.value })} />
             </div>
             <div className="bounties__new-bounty__form__submit">
@@ -104,5 +78,7 @@ export default class Bounties extends Component {
 }
 
 Bounties.propTypes = {
-  repo: PropTypes.object
+  bounties: PropTypes.array,
+  onAddBounty: PropTypes.func,
+  onRemoveBounty: PropTypes.func
 };

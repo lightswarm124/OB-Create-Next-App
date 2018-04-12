@@ -1,5 +1,3 @@
-@import 'src/styles/colors.scss';
-
 .repositories {
   height: 100%;
   display: flex;
@@ -22,37 +20,6 @@
   &__results {
     flex: 1;
     overflow-y: auto;
-
-    &__repo {
-      display: flex;
-      margin: 1rem;
-      background-color: $white;
-      box-shadow: $shadow;
-      padding: 0.5rem;
-      border-radius: 0.25rem;
-
-      &__owner {
-        &__avatar {
-          height: 5rem;
-          width: 5rem;
-        }
-        &__name {
-
-        }
-      }
-
-      &__body {
-        flex: 1;
-        margin: 0 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        &__label {
-          color: $darkGrey;
-          margin: 0.25rem 0;
-        }
-      }
-    }
   }
 }
+

@@ -3,6 +3,7 @@ import HomeRoute from './Home';
 import AccountRoute from './Account';
 import RepositoriesRoute from './Repositories';
 import RepositoryRoute from './Repository';
+import MyRepositoriesRoute from './MyRepositories';
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -23,7 +24,8 @@ export const createRoutes = (store) => (
     childRoutes: [
       AccountRoute,
       RepositoriesRoute,
-      RepositoryRoute
+      RepositoryRoute,
+      MyRepositoriesRoute
     ]
   }
   ]);

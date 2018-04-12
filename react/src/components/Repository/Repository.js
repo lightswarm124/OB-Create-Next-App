@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getRepository } from 'services/githubApi';
-import Bounties from './components/Bounties';
-import PullRequests from './components/PullRequests';
+import RegisteredFeatures from './components/RegisteredFeatures';
 import './styles/repository.scss';
 
 export default class Repository extends Component {
 
   constructor() {
     super();
-    this.state = { repo: {}, selectedTab: 'bounties' };
+    this.state = { repo: {} };
   }
 
   isRepoRegistered(repoId) {
@@ -44,11 +43,6 @@ export default class Repository extends Component {
     });
   }
 
-  setTab(e, selectedTab) {
-    e.preventDefault();
-    this.setState({ selectedTab });
-  }
-
   render() {
     const repo = this.state.repo;
     const isRepoRegistered = this.isRepoRegistered(repo.id);
@@ -80,6 +74,7 @@ export default class Repository extends Component {
                 </div>
               </div>
             </div>
+            <div className="repository__body__description">{ repo.description }</div>
             <div className="repository__body__register">
               { isRepoRegistered
                 ? <button className="button-danger" onClick={() => this.unregisterRepo()}>
@@ -91,28 +86,7 @@ export default class Repository extends Component {
               }
             </div>
             { isRepoRegistered &&
-              <div className="repository__body__tabs">
-                <div className="repository__body__tabs__header">
-                  <div className={this.state.selectedTab === 'bounties'
-                    ? 'repository__body__tabs__header__tab repository__body__tabs__header__tab--active'
-                    : 'repository__body__tabs__header__tab'}>
-                    <a href="" onClick={(e) => this.setTab(e, 'bounties')}>Bounties</a>
-                  </div>
-                  <div className={this.state.selectedTab === 'prs'
-                    ? 'repository__body__tabs__header__tab repository__body__tabs__header__tab--active'
-                    : 'repository__body__tabs__header__tab'}>
-                    <a href="" onClick={(e) => this.setTab(e, 'prs')}>Pull Requests</a>
-                  </div>
-                </div>
-                <div className="repository__body__tabs__body">
-                  { this.state.selectedTab === 'bounties' &&
-                    <Bounties repo={repo} account={this.props.account} />
-                  }
-                  { this.state.selectedTab === 'prs' &&
-                    <PullRequests repo={repo} account={this.props.account} awardBounty={this.props.awardBounty} />
-                  }
-                </div>
-              </div>
+              <RegisteredFeatures repo={repo} account={this.props.account} awardBounty={this.props.awardBounty} />
             }
           </div>
         </div>

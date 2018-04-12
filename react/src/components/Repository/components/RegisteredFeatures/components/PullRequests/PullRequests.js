@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getPullRequestsForRepository } from 'services/githubApi';
+import PullRequest from './components/PullRequest';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import './styles/pullRequests.scss';
 
@@ -21,9 +22,9 @@ export default class PullRequests extends Component {
     });
   }
 
-  awardBounty(pr, tokenAmount) {
+  awardBounty(pr, bounty) {
     // TODO: pr.user.login should be replaced with the pr user's corresponding wallet ID
-    this.props.awardBounty(this.props.account, pr.user.login, tokenAmount).then(() => {
+    this.props.awardBounty(this.props.account, pr.user.login, bounty.value).then(() => {
       const prs = this.state.prs;
       const i = prs.indexOf(pr);
       this.setState({ prs: [...prs.slice(0, i), { ...pr, bountyAwarded: true }, ...prs.slice(i + 1, pr.length)] });
@@ -35,28 +36,8 @@ export default class PullRequests extends Component {
   renderPrs() {
     return this.state.prs.map((pr) => {
       return (
-        <div key={pr.id} className="pull-requests__pr">
-          <div className="pull-requests__pr__user">
-            <img className="pull-requests__pr__user__avatar"
-              src={pr.user.avatar_url} alt="User avatar" />
-          </div>
-          <div className="pull-requests__pr__body">
-            <div className="pull-requests__pr__body__text">
-              <div>{ pr.user.login }</div>
-              <div className="pull-requests__pr__body__text__title">{ pr.title }</div>
-            </div>
-            <div className="pull-requests__pr__body__award">
-              { pr.bountyAwarded
-                ? <div className="pull-requests__pr__body__award__awarded">
-                  Bounty Awarded
-                </div>
-                : <button className="button" onClick={() => this.awardBounty(pr, 500)}>
-                  Award Bounty: 500 tokens
-                </button>
-              }
-            </div>
-          </div>
-        </div>
+        <PullRequest key={pr.id} pr={pr} bounties={this.props.bounties}
+          onAwardBounty={(pr, bounty) => this.awardBounty(pr, bounty)} />
       );
     });
   }
@@ -72,6 +53,7 @@ export default class PullRequests extends Component {
 
 PullRequests.propTypes = {
   repo: PropTypes.object,
+  bounties: PropTypes.array,
   account: PropTypes.object,
   awardBounty: PropTypes.func
 };

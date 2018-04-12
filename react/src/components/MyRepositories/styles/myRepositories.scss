@@ -1,0 +1,10 @@
+.my-repositories {
+  margin: 2rem 0;
+
+  &__empty {
+    margin: 3rem auto;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 3rem;
+  }
+}

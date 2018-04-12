@@ -20,14 +20,16 @@ export default class Header extends Component {
           </a>
         </div>
         <div className="header__nav">
-          <div className="header__nav__badge">
-            { this.props.account.ownerTokenBalance } Tokens
-          </div>
           <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('/repositories', e)}>
-            Repositories
+            GitHub Repositories
+          </a>
+          <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('/myrepositories', e)}>
+            My Repositories
           </a>
           <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('/account', e)}>
-            Account
+            <div className="header__nav__badge">
+              { this.props.account.ownerTokenBalance } Tokens
+            </div>
           </a>
         </div>
       </div>

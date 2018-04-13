@@ -1,5 +1,7 @@
 export function registerRepository(repo, accountId) {
   // TODO: Add POST request to OB API to register repo
+  // If a new Smart Contract is required upon registering the Repository this should be done
+  // in the OpenBounty service, which will unlock the master account for deployment
   return Promise.resolve(repo);
 }
 
@@ -54,7 +56,7 @@ export function getMarketBounties() {
         remaining essentially unchanged. It was popularised in the 1960s with the release of 
         Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
         software like Aldus PageMaker including versions of Lorem Ipsum.`,
-      value: 1000,
+      value: 2000,
       owner: 'Joe Simpson'
     },
     {
@@ -63,7 +65,7 @@ export function getMarketBounties() {
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
         unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-      value: 1000,
+      value: 800,
       owner: 'Jane Smith'
     },
     {
@@ -76,7 +78,7 @@ export function getMarketBounties() {
         remaining essentially unchanged. It was popularised in the 1960s with the release of 
         Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
         software like Aldus PageMaker including versions of Lorem Ipsum.`,
-      value: 1000,
+      value: 600,
       owner: 'Barnie Morrison'
     },
     {
@@ -89,7 +91,7 @@ export function getMarketBounties() {
         remaining essentially unchanged. It was popularised in the 1960s with the release of 
         Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
         software like Aldus PageMaker including versions of Lorem Ipsum.`,
-      value: 1000,
+      value: 1200,
       owner: 'Bill Dole'
     }
   ]);

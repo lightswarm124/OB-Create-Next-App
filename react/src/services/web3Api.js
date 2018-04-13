@@ -47,6 +47,8 @@ export function ethToToken(account, ethAmount) {
 
 export function tokenToEth(account, tokenAmount) {
   // this function could take accountId instead, but need full account for mocking
+  // this will likely require an API call to the OpenBounty API service that holds the passphase required
+  // to unlock the master OpenBounty account
   return Promise.resolve({
     ...account,
     ownerTokenBalance: account.ownerTokenBalance - tokenAmount,
@@ -56,6 +58,8 @@ export function tokenToEth(account, tokenAmount) {
 
 export function awardBountyToRecipient(account, recipientId, tokenAmount) {
   // this function could take accountId instead, but need full account for mocking
+  // this will likely require an API call to the OpenBounty API service that holds the passphase required
+  // to unlock the master OpenBounty account
   return Promise.resolve({
     ...account,
     ownerTokenBalance: account.ownerTokenBalance - tokenAmount

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 import { getAccounts } from 'services/web3Api';
 import './styles/account.scss';
 
@@ -72,9 +73,13 @@ export default class Account extends Component {
               <div className="account__body__sidebar__title">Balances</div>
               <div>
                 <div className="account__body__sidebar__label">ETH Balance</div>
-                <div className="account__body__sidebar__value">{this.props.account.ethBalance}</div>
+                <div className="account__body__sidebar__value">
+                  <NumberFormat value={this.props.account.ethBalance} displayType={'text'} thousandSeparator />
+                </div>
                 <div className="account__body__sidebar__label">OpenBounty Token Balance</div>
-                <div className="account__body__sidebar__value">{this.props.account.ownerTokenBalance}</div>
+                <div className="account__body__sidebar__value">
+                  <NumberFormat value={this.props.account.ownerTokenBalance} displayType={'text'} thousandSeparator />
+                </div>
               </div>
             </div>
             <div className="account__body__content">

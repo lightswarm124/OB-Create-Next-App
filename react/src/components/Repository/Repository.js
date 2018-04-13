@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 import { getRepository } from 'services/githubApi';
 import RegisteredFeatures from './components/RegisteredFeatures';
 import './styles/repository.scss';
@@ -67,10 +68,10 @@ export default class Repository extends Component {
               </div>
               <div className="repository__body__header__stats">
                 <div className="repository__body__header__stats__label">
-                  Watchers: { repo.watchers_count }
+                  Watchers: <NumberFormat value={repo.watchers_count} displayType={'text'} thousandSeparator />
                 </div>
                 <div className="repository__body__header__stats__label">
-                  Subscribers: { repo.subscribers_count }
+                  Subscribers: <NumberFormat value={repo.subscribers_count} displayType={'text'} thousandSeparator />
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getRepository } from 'services/githubApi';
+import NumberFormat from 'react-number-format';
 import './styles/bounty.scss';
 
 export default class Bounty extends Component {
@@ -32,7 +33,9 @@ export default class Bounty extends Component {
             <div className="bounty__header__details__label">Bounty Owner</div>
             <div className="bounty__header__details__value">{ bounty.owner }</div>
             <div className="bounty__header__details__label">Reward</div>
-            <div className="bounty__header__details__value">{ bounty.value } Tokens</div>
+            <div className="bounty__header__details__value">
+              <NumberFormat value={bounty.value} displayType={'text'} thousandSeparator /> Tokens
+            </div>
           </div>
         </div>
         { this.state.repo &&

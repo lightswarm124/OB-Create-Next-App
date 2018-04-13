@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 import { browserHistory } from 'react-router';
 import './styles/repository.scss';
 
@@ -30,10 +31,10 @@ export default class Repository extends PureComponent {
               </a>
             </div>
             <div className="repo__body__header__label">
-              Watchers: { repo.watchers_count }
+              Watchers: <NumberFormat value={repo.watchers_count} displayType={'text'} thousandSeparator />
             </div>
             <div className="repo__body__header__label">
-              Forks: { repo.forks_count }
+              Forks: <NumberFormat value={repo.forks_count} displayType={'text'} thousandSeparator />
             </div>
           </div>
           <div className="repo__body__description">{repo.description}</div>

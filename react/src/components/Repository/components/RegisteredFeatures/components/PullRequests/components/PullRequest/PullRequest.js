@@ -44,7 +44,7 @@ export default class PullRequest extends Component {
                   }
                 </select>
                 { this.state.selectedBounty &&
-                  <button className="button pr__body__award__selection__button"
+                  <button className="button-sm pr__body__award__selection__button"
                     onClick={() => this.props.onAwardBounty(pr, this.state.selectedBounty)}>
                     Award Bounty { this.state.selectedBounty.value } Tokens
                   </button>

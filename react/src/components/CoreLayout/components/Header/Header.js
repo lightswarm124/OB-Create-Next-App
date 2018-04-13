@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import LogoImg from './assets/logo.png';
 import MenuImg from './assets/ic_menu_black_24px.svg';
+import NumberFormat from 'react-number-format';
 import './styles/header.scss';
 
 export default class Header extends Component {
@@ -39,7 +40,7 @@ export default class Header extends Component {
           </a>
           <a className="header__nav__item" href="" onClick={(e) => this.gotoPath('/account', e)}>
             <div className="header__nav__badge">
-              { this.props.account.ownerTokenBalance } Tokens
+              <NumberFormat value={this.props.account.ownerTokenBalance} displayType={'text'} thousandSeparator /> Tokens
             </div>
           </a>
         </div>

@@ -9,7 +9,8 @@ export default class Bounties extends Component {
     this.state = {
       newBountyTitle: '',
       newBountyValue: 500,
-      newBountyDescription: ''
+      newBountyDescription: '',
+      isReadyToAdd: false
     };
   }
 
@@ -21,11 +22,18 @@ export default class Bounties extends Component {
       description: this.state.newBountyDescription
     };
     this.props.onAddBounty(newBounty);
-    this.setState({ newBountyTitle: '', newBountyValue: 500, newBountyDescription: '' });
+    this.setState({ newBountyTitle: '', newBountyValue: 500, newBountyDescription: '', isReadyToAdd: false });
   }
 
   removeBounty(bounty) {
     this.props.onRemoveBounty(bounty);
+  }
+
+  setReadyToAdd(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    this.setState({ isReadyToAdd: true });
   }
 
   renderBounties() {
@@ -51,27 +59,34 @@ export default class Bounties extends Component {
     return (
       <div className="bounties">
         { this.renderBounties() }
-        <div className="bounties__new-bounty">
-          <form onSubmit={(e) => this.addBounty(e)} className="bounties__new-bounty__form">
-            <div className="bounties__new-bounty__form__header">
-              <input className="input bounties__new-bounty__form__header__title"
-                type="text" value={this.state.newBountyTitle} placeholder="Bounty Title" required
-                onChange={(e) => this.setState({ newBountyTitle: e.target.value })} />
-              <label>Tokens:</label>
-              <input className="input bounties__new-bounty__form__header__value"
-                type="number" value={this.state.newBountyValue} placeholder="Bounty Value" required
-                onChange={(e) => this.setState({ newBountyValue: e.target.value })} />
+        { this.state.isReadyToAdd
+          ? <div className="bounties__new-bounty">
+            <form onSubmit={(e) => this.addBounty(e)} className="bounties__new-bounty__form">
+              <div className="bounties__new-bounty__form__header">
+                <input className="input bounties__new-bounty__form__header__title"
+                  type="text" value={this.state.newBountyTitle} placeholder="Bounty Title" required
+                  onChange={(e) => this.setState({ newBountyTitle: e.target.value })} />
+                <label>Tokens:</label>
+                <input className="input bounties__new-bounty__form__header__value"
+                  type="number" value={this.state.newBountyValue} placeholder="Bounty Value" required
+                  onChange={(e) => this.setState({ newBountyValue: e.target.value })} />
+              </div>
+              <div className="bounties__new-bounty__form__body">
+                <textarea className="input bounties__new-bounty__form__body__description"
+                  value={this.state.newBountyDescription} placeholder="Bounty Description" rows="5"
+                  required onChange={(e) => this.setState({ newBountyDescription: e.target.value })} />
+              </div>
+              <div className="bounties__new-bounty__form__submit">
+                <input className="button" type="submit" value="Post Bounty" />
+              </div>
+            </form>
+          </div>
+          : <div className="bounties__new-bounty-outline" onClick={() => this.setReadyToAdd()}>
+            <div className="bounties__new-bounty-outline__label">
+              <a href="" onClick={(e) => this.setReadyToAdd(e)}>Add New Bounty</a>
             </div>
-            <div className="bounties__new-bounty__form__body">
-              <textarea className="input bounties__new-bounty__form__body__description"
-                value={this.state.newBountyDescription} placeholder="Bounty Description" rows="5"
-                required onChange={(e) => this.setState({ newBountyDescription: e.target.value })} />
-            </div>
-            <div className="bounties__new-bounty__form__submit">
-              <input className="button" type="submit" value="Post Bounty" />
-            </div>
-          </form>
-        </div>
+          </div>
+        }
       </div>
     );
   }

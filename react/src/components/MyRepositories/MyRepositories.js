@@ -34,7 +34,7 @@ export default class MyRepositories extends Component {
     return (
       <div className="container">
         <div className="my-repositories">
-          { this.state.repositories.length > 0 ? this.renderRepositories()
+          { this.props.registeredRepos.length > 0 ? this.renderRepositories()
           : <div className="my-repositories__empty">
             <div>You have no repositories registered with OpenBounty</div>
             <div><Link to="/repositories">find your GitHub repositories</Link> and register them</div>

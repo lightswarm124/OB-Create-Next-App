@@ -16,7 +16,7 @@ export default class Repository extends PureComponent {
     const repo = this.props.repo;
 
     return (
-      <div className="repo">
+      <div className="repo" onClick={() => this.gotoPath('/repository/' + repo.id)}>
         { repo.owner &&
           <div className="repo__owner">
             <img className="repo__owner__avatar" src={repo.owner.avatar_url} alt="Avatar" />

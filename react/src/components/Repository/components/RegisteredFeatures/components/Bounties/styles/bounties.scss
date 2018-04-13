@@ -32,6 +32,26 @@
 		}
 	}
 
+  &__new-bounty-outline {
+    border-style: dashed;
+    border-width: 0.125rem;
+    border-color: $grey;
+    height: 10rem;
+    margin: 2rem 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__label {
+      font-size: 2rem;
+      a {
+        color: $grey;
+        text-decoration: none;
+      }
+    }
+  }
+
 	&__new-bounty {
 		margin: 2rem 0;
 

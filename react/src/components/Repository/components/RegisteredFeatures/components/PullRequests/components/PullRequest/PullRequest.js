@@ -35,7 +35,7 @@ export default class PullRequest extends Component {
               : <div className="pr__body__award__selection">
                 <select className="select"
                   value={this.state.selectedBounty} onChange={(e) => this.changeBounty(e.target.value)}>
-                  <option value="">Select Bounty to Award</option>
+                  <option value="">Select bounty to award</option>
                   { this.props.bounties.map((bounty, i) => {
                     return (
                       <option key={pr.id + 'bounty' + i} value={i}>{ bounty.title }</option>

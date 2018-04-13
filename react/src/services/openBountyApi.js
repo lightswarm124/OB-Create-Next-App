@@ -48,7 +48,7 @@ export function getMarketBounties() {
     },
     {
       repoId: '24195339',
-      title: 'Image upload via iOS / Android displayed sideways',
+      title: 'Out of memory/crash when not in debugger',
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
         unknown printer took a galley of type and scrambled it to make a type specimen book. 
@@ -61,7 +61,7 @@ export function getMarketBounties() {
     },
     {
       repoId: '1801829',
-      title: 'Image upload via iOS / Android displayed sideways',
+      title: 'Zooming before starting record with low quality ',
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
         unknown printer took a galley of type and scrambled it to make a type specimen book.`,
@@ -70,7 +70,7 @@ export function getMarketBounties() {
     },
     {
       repoId: '757363',
-      title: 'Image upload via iOS / Android displayed sideways',
+      title: 'Scan barcode in album orientation not works on RNCamera',
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
         unknown printer took a galley of type and scrambled it to make a type specimen book. 
@@ -83,7 +83,7 @@ export function getMarketBounties() {
     },
     {
       repoId: '3214406',
-      title: 'Image upload via iOS / Android displayed sideways',
+      title: 'Using local file npm package makes app crash when deploying',
       description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an 
         unknown printer took a galley of type and scrambled it to make a type specimen book. 

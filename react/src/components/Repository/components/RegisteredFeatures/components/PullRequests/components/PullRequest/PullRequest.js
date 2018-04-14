@@ -25,7 +25,9 @@ export default class PullRequest extends Component {
         <div className="pr__body">
           <div className="pr__body__text">
             <div>{ pr.user.login }</div>
-            <div className="pr__body__text__title">{ pr.title }</div>
+            <div className="pr__body__text__title">
+              <a href={pr.html_url} target="_blank">{ pr.title }</a>
+            </div>
           </div>
           <div className="pr__body__award">
             { pr.bountyAwarded

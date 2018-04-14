@@ -9,7 +9,7 @@ export default class CoreLayout extends Component {
     this.props.loadAccounts().then((accounts) => {
       return this.props.loadAccount(accounts[0]);
     }).catch((error) => {
-      console.log('Error loading accounts: ' + error);
+      console.log('Error loading accounts - is your web3 provider running?: ' + error);
     });
     this.props.loadRegisteredRepos().catch((error) => {
       console.log('Error loading registered repositories: ' + error);

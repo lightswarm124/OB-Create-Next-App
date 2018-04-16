@@ -30,6 +30,12 @@ Note that build variables for production can be modified in
 
 ./config/project.config.js
 
+## Test PRC
+
+In order to retrieve the list of test Ethereum account, a web3 provider, such as test RPC or truffle dev must be running in the background
+
+To change the URL of the web3 provider in the React app, change the value of the varaible __WEB3_PROVIDER_URL__ in ./config/project.config.js
+
 ## Assumptions
 
 The OpenBounty react front end is designed and developed with three types of integrations in mind:

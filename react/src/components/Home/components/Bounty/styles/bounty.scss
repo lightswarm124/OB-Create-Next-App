@@ -1,0 +1,47 @@
+@import 'src/styles/colors.scss';
+
+.bounty {
+  margin: 1rem 0.5rem;
+  flex: 1 0 13.5rem;
+  background-color: $white;
+  box-shadow: $shadow;
+  padding: 1rem;
+  color: $darkGrey;
+
+  &__header {
+    display: flex;
+
+    &__avatar {
+      height: 6rem;
+      width: 6rem;
+      border-radius: 0.25rem;
+    }
+
+    &__details {
+      margin-left: 1rem;
+
+      &__label {
+        font-weight: 900;
+      }
+
+      &__value {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  &__title {
+    margin: 1rem 0;
+    background-color: $primary;
+    color: $white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  &__description {
+    max-height: 12.5rem;
+    font-size: 0.85rem;
+    overflow-y: auto;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,0 +1,89 @@
+@import 'src/styles/colors.scss';
+
+.header {
+  width: 100%;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: $shadow;
+  z-index: 99;
+  background-color: $white;
+
+  &__logo {
+    margin-left: 1rem;
+    img {
+      height: 3rem;
+    }
+  }
+
+  &__nav {
+    display: flex;
+
+    &__badge {
+      padding: 0.5rem 1rem;
+      background-color: $primary;
+      color: $white;
+      border-radius: 1rem;
+    }
+
+    &__item {
+      margin-right: 2rem;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $darkGrey;
+    }
+  }
+}
+
+.dropdown-item {
+  width: 3.25rem;
+  height: 2.5rem;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1rem;
+  display: none;
+
+  &__pic {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    border-style: none;
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    min-width: 10rem;
+    z-index: 91;
+    margin-top: 0.75rem;
+    top: 2rem;
+    right: 0.25rem;
+    box-shadow: $shadow; 
+    background-color: $white;
+
+    a {
+      padding: 1rem;
+      text-decoration: none;
+      display: block;
+      color: $darkGrey;
+    }
+  }
+}
+
+@media screen and (max-width: 50em) {
+  .header {
+    &__nav {
+      display: none;
+    }
+  }
+
+  .dropdown-item {
+    display: flex;
+  }
+}

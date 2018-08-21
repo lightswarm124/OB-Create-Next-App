@@ -8,3 +8,6 @@
 
 # misc
 client/lib/contracts
+
+# Mac local files
+.DS_Store

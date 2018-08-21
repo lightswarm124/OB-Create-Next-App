@@ -19,16 +19,20 @@ contract OpenBounty {
         return bounty.ProjectOwner;
     }
 
+    function lockBlockNumber() public view returns (uint blockNumber) {
+        return bounty.lockBlockNumber;
+    }
+
+    function unlockBlockNumber() public view returns (uint blockNumber) {
+        return bounty.unlockBlockNumber;
+    }
+
     function isBountyManager(address account) public view returns (bool isTrue) {
         return bounty.isBountyManager(account);
     }
 
     function isProjectOwner(address account) public view returns (bool isTrue) {
         return bounty.isProjectOwner(account);
-    }
-
-    function checkBlockLock () public view returns (bool unlock) {
-        return bounty.checkBlockLock();
     }
 
     function changeProjectOwner(address _newProjectOwner) public returns (address newOwner) {
@@ -100,7 +104,6 @@ contract OpenBounty {
     }
 
 	function () public payable {
-		require(bounty.bountyStatus != OpenBountyLib.lockState.Inactive);
 		BountyFunded(msg.sender, msg.value);
 	}
 

@@ -1,42 +1,46 @@
 import Link from 'next/link';
+import ActiveLink from './ActiveLink';
 
 const links = [
-	{ href: 'https://github.com/lightswarm124', label: 'Login w/ Github' }
+	{ href: 'https://github.com/lightswarm124', label: <img src="../static/GitHub-Mark-120px-plus.png" width="30px" title="Login with GitHub" /> }
 ].map(link => {	// remap link.href + link.label into link.key
 	link.key = `nav-link-${link.href}-${link.label}`
 	return link;
 });
 
 const Nav = () => (
-	<nav className="navbar navbar-expand navbar-dark bg-dark mb-4">
+	<nav className="navbar navbar-expand-lg navbar-light bg-light">
 		<div className="container">
-			<a className="navbar-brand" href="/">OpenBounty</a>
+			<a className="navbar-brand" href="/"><img src="../static/Logo_Black.png" title="Home" width="180px" /></a>
 			<div className="collapse navbar-collapse">
 				<ul className="navbar-nav ml-auto">
 				  	<li className="nav-item">
-						<Link prefetch href="/">
-					  		<a className="nav-link">Home</a>
-						</Link>
+
+
 						<Link prefetch href="/account">
-							<a className="nav-link">Account</a>
+							<a className="nav-link"><img src="../static/Account.png" width="30px" title="Account Management" /></a>
 						</Link>
 						<Link prefetch href="/repositories">
-							<a className="nav-link">Repos</a>
+							<a className="nav-link"><img src="../static/Repositories.png" width="30px" title="Repository Management" /></a>
 						</Link>
 						<Link prefetch href="/project">
-						  <a className="nav-link">Project</a>
+						  <a className="nav-link"><img src="../static/Project.png" width="30px" title="Project Management" /></a>
 						</Link>
-						<Link prefetch href="/dashboard">
-							<a className="nav-link">Dashboard</a>
+						<Link prefetch href="/testOB">
+							<a className="nav-link"><img src="../static/Settings.png" width="30px" title="OpenBounty Settings" /></a>
 						</Link>
+						<ActiveLink className="nav-link" href="/repos">
+							Repos
+						</ActiveLink>
 				  	</li>
 				  	<ul>
 						{links.map( // remap links array into HTML format
 					  		({ key, href, label }) => (
 								<li className="nav-item" key={key}>
-						  			<Link prefetch href={href}>
-										<a className="nav-link">{label}</a>
-						  			</Link>
+						  			<ActiveLink href={href}>
+										{label}
+						  			</ActiveLink>
+
 								</li>
 					  		)
 						)}
@@ -64,7 +68,7 @@ const Nav = () => (
 				display: flex;
 				padding: 6px 8px;
 			}
-			a {
+			ActiveLink {
 				color: #067df7;
 				text-decoration: none;
 				font-size: 13px;
